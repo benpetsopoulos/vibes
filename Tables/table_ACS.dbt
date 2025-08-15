@@ -1,0 +1,7593 @@
+@gsw.subsystem: ACS
+@classname: FC
+
+table AcAtcTable {
+  @description: "Spacecraft Attitude Control Parameter Table"
+  @buildstruct!
+  @fsw.component: ACATCTABLE
+  @id: 15
+
+  .EnableCtlTorque:
+    @datatype: uint16
+    @array: DBT_NUM_AC_MODE
+    @conversion: True_False
+
+  ."EnableCtlTorque[*":
+    @structname: "EnableCtlTorque[*"
+
+  .EnableCtlTorque[0]:
+    @description: "Enable Control Torque (1)"
+    @units: Standby
+    @default: False
+
+  .EnableCtlTorque[1]:
+    @description: "Enable Control Torque (2)"
+    @units: SunAcq
+    @default: True
+
+  .EnableCtlTorque[2]:
+    @description: "Enable Control Torque (3)"
+    @units: EarthAcq
+    @default: True
+
+  .EnableCtlTorque[3]:
+    @description: "Enable Control Torque (4)"
+    @units: TgtPnt
+    @default: True
+
+  .EnableCtlTorque[4]:
+    @description: "Enable Control Torque (5)"
+    @units: Normal
+    @default: True
+
+  .EnableCtlTorque[5]:
+    @description: "Enable Control Torque (6)"
+    @units: DeltaV
+    @default: True
+
+  .EnableGyrTorque:
+    @datatype: uint16
+    @array: DBT_NUM_AC_MODE
+    @conversion: True_False
+
+  ."EnableGyrTorque[*":
+    @structname: "EnableGyrTorque[*"
+
+  .EnableGyrTorque[0]:
+    @description: "Enable Gyroscopic Feedforward Torque (1)"
+    @units: Standby
+    @default: False
+
+  .EnableGyrTorque[1]:
+    @description: "Enable Gyroscopic Feedforward Torque (2)"
+    @units: SunAcq
+    @default: True
+
+  .EnableGyrTorque[2]:
+    @description: "Enable Gyroscopic Feedforward Torque (3)"
+    @units: EarthAcq
+    @default: True
+
+  .EnableGyrTorque[3]:
+    @description: "Enable Gyroscopic Feedforward Torque (4)"
+    @units: TgtPnt
+    @default: True
+
+  .EnableGyrTorque[4]:
+    @description: "Enable Gyroscopic Feedforward Torque (5)"
+    @units: Normal
+    @default: True
+
+  .EnableGyrTorque[5]:
+    @description: "Enable Gyroscopic Feedforward Torque (6)"
+    @units: DeltaV
+    @default: True
+
+  .EnableCmdTorque:
+    @datatype: uint16
+    @array: DBT_NUM_AC_MODE
+    @conversion: True_False
+
+  ."EnableCmdTorque[*":
+    @structname: "EnableCmdTorque[*"
+
+  .EnableCmdTorque[0]:
+    @description: "Enable Commanded Feedforward Torque (1)"
+    @units: Standby
+    @default: False
+
+  .EnableCmdTorque[1]:
+    @description: "Enable Commanded Feedforward Torque (2)"
+    @units: SunAcq
+    @default: True
+
+  .EnableCmdTorque[2]:
+    @description: "Enable Commanded Feedforward Torque (3)"
+    @units: EarthAcq
+    @default: True
+
+  .EnableCmdTorque[3]:
+    @description: "Enable Commanded Feedforward Torque (4)"
+    @units: TgtPnt
+    @default: True
+
+  .EnableCmdTorque[4]:
+    @description: "Enable Commanded Feedforward Torque (5)"
+    @units: Normal
+    @default: True
+
+  .EnableCmdTorque[5]:
+    @description: "Enable Commanded Feedforward Torque (6)"
+    @units: DeltaV
+    @default: True
+
+  .EnableLPF:
+    @datatype: uint16
+    @array: "DBT_NUM_AC_MODE,DBT_NUM_SC_CFG"
+    @conversion: True_False
+
+  ."EnableLPF[*":
+    @structname: "EnableLPF[*"
+
+  .EnableLPF[0][0]:
+    @description: "Enable Low Pass Filter (1,1)"
+    @units: "Standby,Stowed"
+    @default: False
+
+  .EnableLPF[1][0]:
+    @description: "Enable Low Pass Filter (2,1)"
+    @units: "SunAcq,Stowed"
+    @default: False
+
+  .EnableLPF[2][0]:
+    @description: "Enable Low Pass Filter (3,1)"
+    @units: "EarthAcq,Stowed"
+    @default: False
+
+  .EnableLPF[3][0]:
+    @description: "Enable Low Pass Filter (4,1)"
+    @units: "TgtPnt,Stowed"
+    @default: False
+
+  .EnableLPF[4][0]:
+    @description: "Enable Low Pass Filter (5,1)"
+    @units: "Normal,Stowed"
+    @default: False
+
+  .EnableLPF[5][0]:
+    @description: "Enable Low Pass Filter (6,1)"
+    @units: "DeltaV,Stowed"
+    @default: True
+
+  .TorqueFilX:
+    @datatype: lpf_param_type
+
+  ."TorqueFilX.*":
+    @structname: "TorqueFilX.*"
+
+  .TorqueFilY:
+    @datatype: lpf_param_type
+
+  ."TorqueFilY.*":
+    @structname: "TorqueFilY.*"
+
+  .TorqueFilZ:
+    @datatype: lpf_param_type
+
+  ."TorqueFilZ.*":
+    @structname: "TorqueFilZ.*"
+
+  .Lmt:
+    @datatype: ac_atc_table_lmt_type
+
+  ."Lmt.*":
+    @structname: "Lmt.*"
+
+  .Cp:
+    @datatype: uVector
+    @array: "DBT_NUM_AC_MODE,DBT_NUM_SC_CFG"
+
+  ."Cp[*":
+    @structname: "Cp[*"
+
+  .Cp[0][0].v[0]:
+    @description: "PID Attitude Control Gain (1,1,1)"
+    @units: "1/sec^2,Standby,Stowed"
+    @default: 0.0000E+00
+
+  .Cp[0][0].v[1]:
+    @description: "PID Attitude Control Gain (1,1,2)"
+    @units: "1/sec^2,Standby,Stowed"
+    @default: 0.0000E+00
+
+  .Cp[0][0].v[2]:
+    @description: "PID Attitude Control Gain (1,1,3)"
+    @units: "1/sec^2,Standby,Stowed"
+    @default: 0.0000E+00
+
+  .Cp[1][0].v[0]:
+    @description: "PID Attitude Control Gain (2,1,1)"
+    @units: "1/sec^2,SunAcq,Stowed"
+    @default: 5.9522E-02
+
+  .Cp[1][0].v[1]:
+    @description: "PID Attitude Control Gain (2,1,2)"
+    @units: "1/sec^2,SunAcq,Stowed"
+    @default: 5.9522E-02
+
+  .Cp[1][0].v[2]:
+    @description: "PID Attitude Control Gain (2,1,3)"
+    @units: "1/sec^2,SunAcq,Stowed"
+    @default: 1.0334E-02
+
+  .Cp[2][0].v[0]:
+    @description: "PID Attitude Control Gain (3,1,1)"
+    @units: "1/sec^2,EarthAcq,Stowed"
+    @default: 5.9522E-02
+
+  .Cp[2][0].v[1]:
+    @description: "PID Attitude Control Gain (3,1,2)"
+    @units: "1/sec^2,EarthAcq,Stowed"
+    @default: 5.9522E-02
+
+  .Cp[2][0].v[2]:
+    @description: "PID Attitude Control Gain (3,1,3)"
+    @units: "1/sec^2,EarthAcq,Stowed"
+    @default: 1.0334E-02
+
+  .Cp[3][0].v[0]:
+    @description: "PID Attitude Control Gain (4,1,1)"
+    @units: "1/sec^2,TgtPnt,Stowed"
+    @default: 5.9522E-02
+
+  .Cp[3][0].v[1]:
+    @description: "PID Attitude Control Gain (4,1,2)"
+    @units: "1/sec^2,TgtPnt,Stowed"
+    @default: 5.9522E-02
+
+  .Cp[3][0].v[2]:
+    @description: "PID Attitude Control Gain (4,1,3)"
+    @units: "1/sec^2,TgtPnt,Stowed"
+    @default: 1.0334E-02
+
+  .Cp[4][0].v[0]:
+    @description: "PID Attitude Control Gain (5,1,1)"
+    @units: "1/sec^2,Normal,Stowed"
+    @default: 5.9522E-02
+
+  .Cp[4][0].v[1]:
+    @description: "PID Attitude Control Gain (5,1,2)"
+    @units: "1/sec^2,Normal,Stowed"
+    @default: 5.9522E-02
+
+  .Cp[4][0].v[2]:
+    @description: "PID Attitude Control Gain (5,1,3)"
+    @units: "1/sec^2,Normal,Stowed"
+    @default: 1.0334E-02
+
+  .Cp[5][0].v[0]:
+    @description: "PID Attitude Control Gain (6,1,1)"
+    @units: "1/sec^2,DeltaV,Stowed"
+    @default: 2.4329E-02
+
+  .Cp[5][0].v[1]:
+    @description: "PID Attitude Control Gain (6,1,2)"
+    @units: "1/sec^2,DeltaV,Stowed"
+    @default: 2.4329E-02
+
+  .Cp[5][0].v[2]:
+    @description: "PID Attitude Control Gain (6,1,3)"
+    @units: "1/sec^2,DeltaV,Stowed"
+    @default: 9.9973E-03
+
+  .Cr:
+    @datatype: uVector
+    @array: "DBT_NUM_AC_MODE,DBT_NUM_SC_CFG"
+
+  ."Cr[*":
+    @structname: "Cr[*"
+
+  .Cr[0][0].v[0]:
+    @description: "PID Rate Control Gain (1,1,1)"
+    @units: "1/sec,Standby,Stowed"
+    @default: 0.0000E+00
+
+  .Cr[0][0].v[1]:
+    @description: "PID Rate Control Gain (1,1,2)"
+    @units: "1/sec,Standby,Stowed"
+    @default: 0.0000E+00
+
+  .Cr[0][0].v[2]:
+    @description: "PID Rate Control Gain (1,1,3)"
+    @units: "1/sec,Standby,Stowed"
+    @default: 0.0000E+00
+
+  .Cr[1][0].v[0]:
+    @description: "PID Rate Control Gain (2,1,1)"
+    @units: "1/sec,SunAcq,Stowed"
+    @default: 3.5657E-01
+
+  .Cr[1][0].v[1]:
+    @description: "PID Rate Control Gain (2,1,2)"
+    @units: "1/sec,SunAcq,Stowed"
+    @default: 3.5657E-01
+
+  .Cr[1][0].v[2]:
+    @description: "PID Rate Control Gain (2,1,3)"
+    @units: "1/sec,SunAcq,Stowed"
+    @default: 1.4857E-01
+
+  .Cr[2][0].v[0]:
+    @description: "PID Rate Control Gain (3,1,1)"
+    @units: "1/sec,EarthAcq,Stowed"
+    @default: 3.5657E-01
+
+  .Cr[2][0].v[1]:
+    @description: "PID Rate Control Gain (3,1,2)"
+    @units: "1/sec,EarthAcq,Stowed"
+    @default: 3.5657E-01
+
+  .Cr[2][0].v[2]:
+    @description: "PID Rate Control Gain (3,1,3)"
+    @units: "1/sec,EarthAcq,Stowed"
+    @default: 1.4857E-01
+
+  .Cr[3][0].v[0]:
+    @description: "PID Rate Control Gain (4,1,1)"
+    @units: "1/sec,TgtPnt,Stowed"
+    @default: 3.5657E-01
+
+  .Cr[3][0].v[1]:
+    @description: "PID Rate Control Gain (4,1,2)"
+    @units: "1/sec,TgtPnt,Stowed"
+    @default: 3.5657E-01
+
+  .Cr[3][0].v[2]:
+    @description: "PID Rate Control Gain (4,1,3)"
+    @units: "1/sec,TgtPnt,Stowed"
+    @default: 1.4857E-01
+
+  .Cr[4][0].v[0]:
+    @description: "PID Rate Control Gain (5,1,1)"
+    @units: "1/sec,Normal,Stowed"
+    @default: 3.5657E-01
+
+  .Cr[4][0].v[1]:
+    @description: "PID Rate Control Gain (5,1,2)"
+    @units: "1/sec,Normal,Stowed"
+    @default: 3.5657E-01
+
+  .Cr[4][0].v[2]:
+    @description: "PID Rate Control Gain (5,1,3)"
+    @units: "1/sec,Normal,Stowed"
+    @default: 1.4857E-01
+
+  .Cr[5][0].v[0]:
+    @description: "PID Rate Control Gain (6,1,1)"
+    @units: "1/sec,DeltaV,Stowed"
+    @default: 2.1778E-01
+
+  .Cr[5][0].v[1]:
+    @description: "PID Rate Control Gain (6,1,2)"
+    @units: "1/sec,DeltaV,Stowed"
+    @default: 2.1778E-01
+
+  .Cr[5][0].v[2]:
+    @description: "PID Rate Control Gain (6,1,3)"
+    @units: "1/sec,DeltaV,Stowed"
+    @default: 1.3960E-01
+
+  .Ci:
+    @datatype: uVector
+    @array: "DBT_NUM_AC_MODE,DBT_NUM_SC_CFG"
+
+  ."Ci[*":
+    @structname: "Ci[*"
+
+  .Ci[0][0].v[0]:
+    @description: "PID Integral Control Gain (1,1,1)"
+    @units: "1/sec^3,Standby,Stowed"
+    @default: 0.0000E+00
+
+  .Ci[0][0].v[1]:
+    @description: "PID Integral Control Gain (1,1,2)"
+    @units: "1/sec^3,Standby,Stowed"
+    @default: 0.0000E+00
+
+  .Ci[0][0].v[2]:
+    @description: "PID Integral Control Gain (1,1,3)"
+    @units: "1/sec^3,Standby,Stowed"
+    @default: 0.0000E+00
+
+  .Ci[1][0].v[0]:
+    @description: "PID Integral Control Gain (2,1,1)"
+    @units: "1/sec^3,SunAcq,Stowed"
+    @default: 0.0000E+00
+
+  .Ci[1][0].v[1]:
+    @description: "PID Integral Control Gain (2,1,2)"
+    @units: "1/sec^3,SunAcq,Stowed"
+    @default: 0.0000E+00
+
+  .Ci[1][0].v[2]:
+    @description: "PID Integral Control Gain (2,1,3)"
+    @units: "1/sec^3,SunAcq,Stowed"
+    @default: 0.0000E+00
+
+  .Ci[2][0].v[0]:
+    @description: "PID Integral Control Gain (3,1,1)"
+    @units: "1/sec^3,EarthAcq,Stowed"
+    @default: 0.0000E+00
+
+  .Ci[2][0].v[1]:
+    @description: "PID Integral Control Gain (3,1,2)"
+    @units: "1/sec^3,EarthAcq,Stowed"
+    @default: 0.0000E+00
+
+  .Ci[2][0].v[2]:
+    @description: "PID Integral Control Gain (3,1,3)"
+    @units: "1/sec^3,EarthAcq,Stowed"
+    @default: 0.0000E+00
+
+  .Ci[3][0].v[0]:
+    @description: "PID Integral Control Gain (4,1,1)"
+    @units: "1/sec^3,TgtPnt,Stowed"
+    @default: 0.0000E+00
+
+  .Ci[3][0].v[1]:
+    @description: "PID Integral Control Gain (4,1,2)"
+    @units: "1/sec^3,TgtPnt,Stowed"
+    @default: 0.0000E+00
+
+  .Ci[3][0].v[2]:
+    @description: "PID Integral Control Gain (4,1,3)"
+    @units: "1/sec^3,TgtPnt,Stowed"
+    @default: 0.0000E+00
+
+  .Ci[4][0].v[0]:
+    @description: "PID Integral Control Gain (5,1,1)"
+    @units: "1/sec^3,Normal,Stowed"
+    @default: 3.1978E-03
+
+  .Ci[4][0].v[1]:
+    @description: "PID Integral Control Gain (5,1,2)"
+    @units: "1/sec^3,Normal,Stowed"
+    @default: 3.1978E-03
+
+  .Ci[4][0].v[2]:
+    @description: "PID Integral Control Gain (5,1,3)"
+    @units: "1/sec^3,Normal,Stowed"
+    @default: 2.3132E-04
+
+  .Ci[5][0].v[0]:
+    @description: "PID Integral Control Gain (6,1,1)"
+    @units: "1/sec^3,DeltaV,Stowed"
+    @default: 8.7818E-04
+
+  .Ci[5][0].v[1]:
+    @description: "PID Integral Control Gain (6,1,2)"
+    @units: "1/sec^3,DeltaV,Stowed"
+    @default: 8.7818E-04
+
+  .Ci[5][0].v[2]:
+    @description: "PID Integral Control Gain (6,1,3)"
+    @units: "1/sec^3,DeltaV,Stowed"
+    @default: 2.3132E-04
+
+  .Fdc:
+    @datatype: ac_atc_table_fdc_type
+
+  ."Fdc.*":
+    @structname: "Fdc.*"
+}
+
+table AcCssTable {
+  @buildstruct!
+  @fsw.component: ACCSSTABLE
+  @id: 24
+
+  .AtoDGainFactor:
+    @description: "CSS A/D Gain Factor"
+    @units: "N/A"
+    @datatype: float64
+
+  .ScaleFactor:
+    @description: "CSS Scale Factor"
+    @units: "N/A"
+    @datatype: float64
+
+  .SpareReal1:
+    @units: "N/A"
+    @datatype: float64
+
+  .SdotFiltera1:
+    @description: SdotFiltera1
+    @units: "N/A"
+    @datatype: float64
+
+  .SdotFilterb1:
+    @description: SdotFilterb1
+    @units: "N/A"
+    @datatype: float64
+
+  .AlbedoThr:
+    @datatype: float64
+    @array: 8
+
+  ."AlbedoThr[*":
+    @structname: "AlbedoThr[*"
+
+  .AlbedoThr[0]:
+    @units: Amp
+
+  .AlbedoThr[1]:
+    @units: Amp
+
+  .AlbedoThr[2]:
+    @units: Amp
+
+  .AlbedoThr[3]:
+    @units: Amp
+
+  .AlbedoThr[4]:
+    @units: Amp
+
+  .AlbedoThr[5]:
+    @units: Amp
+
+  .AlbedoThr[6]:
+    @units: Amp
+
+  .AlbedoThr[7]:
+    @units: Amp
+
+  .SpareReal2:
+    @units: "N/A"
+    @datatype: float64
+
+  .SpareReal3:
+    @units: "N/A"
+    @datatype: float64
+
+  .Opposing:
+    @datatype: uint16
+    @array: 8
+
+  ."Opposing[*":
+    @structname: "Opposing[*"
+
+  .Opposing[0]:
+    @units: "N/A"
+
+  .Opposing[1]:
+    @units: "N/A"
+
+  .Opposing[2]:
+    @units: "N/A"
+
+  .Opposing[3]:
+    @units: "N/A"
+
+  .Opposing[4]:
+    @units: "N/A"
+
+  .Opposing[5]:
+    @units: "N/A"
+
+  .Opposing[6]:
+    @units: "N/A"
+
+  .Opposing[7]:
+    @units: "N/A"
+
+  .StartEclipseCount:
+    @description: StartEclipseCount
+    @units: "N/A"
+    @datatype: uint16
+
+  .EndEclipseCount:
+    @description: EndEclipseCount
+    @units: "N/A"
+    @datatype: uint16
+
+  .MaxEclipseDuration:
+    @description: MaxEclipseDuration
+    @units: "N/A"
+    @datatype: uint16
+
+  .SpareWord:
+    @units: "N/A"
+    @datatype: uint16
+
+  .MaxDetectorCurrent:
+    @datatype: float64
+    @array: 8
+
+  ."MaxDetectorCurrent[*":
+    @structname: "MaxDetectorCurrent[*"
+
+  .MaxDetectorCurrent[0]:
+    @description: "Max value for valid detector (1)"
+    @units: Amp
+
+  .MaxDetectorCurrent[1]:
+    @description: "Max value for valid detector (2)"
+    @units: Amp
+
+  .MaxDetectorCurrent[2]:
+    @description: "Max value for valid detector (3)"
+    @units: Amp
+
+  .MaxDetectorCurrent[3]:
+    @description: "Max value for valid detector (4)"
+    @units: Amp
+
+  .MaxDetectorCurrent[4]:
+    @description: "Max value for valid detector (5)"
+    @units: Amp
+
+  .MaxDetectorCurrent[5]:
+    @description: "Max value for valid detector (6)"
+    @units: Amp
+
+  .MaxDetectorCurrent[6]:
+    @description: "Max value for valid detector (7)"
+    @units: Amp
+
+  .MaxDetectorCurrent[7]:
+    @description: "Max value for valid detector (8)"
+    @units: Amp
+
+  .MinDetectorCurrent:
+    @datatype: float64
+    @array: 8
+
+  ."MinDetectorCurrent[*":
+    @structname: "MinDetectorCurrent[*"
+
+  .MinDetectorCurrent[0]:
+    @description: "Min value for valid detector (1)"
+    @units: Amp
+
+  .MinDetectorCurrent[1]:
+    @description: "Min value for valid detector (2)"
+    @units: Amp
+
+  .MinDetectorCurrent[2]:
+    @description: "Min value for valid detector (3)"
+    @units: Amp
+
+  .MinDetectorCurrent[3]:
+    @description: "Min value for valid detector (4)"
+    @units: Amp
+
+  .MinDetectorCurrent[4]:
+    @description: "Min value for valid detector (5)"
+    @units: Amp
+
+  .MinDetectorCurrent[5]:
+    @description: "Min value for valid detector (6)"
+    @units: Amp
+
+  .MinDetectorCurrent[6]:
+    @description: "Min value for valid detector (7)"
+    @units: Amp
+
+  .MinDetectorCurrent[7]:
+    @description: "Min value for valid detector (8)"
+    @units: Amp
+
+  .CssEye:
+    @datatype: float64
+    @array: "8,3"
+
+  ."CssEye[*":
+    @structname: "CssEye[*"
+
+  .PI003:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI003[*":
+    @structname: "PI003[*"
+
+  .PI005:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI005[*":
+    @structname: "PI005[*"
+
+  .PI006:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI006[*":
+    @structname: "PI006[*"
+
+  .PI009:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI009[*":
+    @structname: "PI009[*"
+
+  .PI010:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI010[*":
+    @structname: "PI010[*"
+
+  .PI012:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI012[*":
+    @structname: "PI012[*"
+
+  .PI017:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI017[*":
+    @structname: "PI017[*"
+
+  .PI018:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI018[*":
+    @structname: "PI018[*"
+
+  .PI024:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI024[*":
+    @structname: "PI024[*"
+
+  .PI033:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI033[*":
+    @structname: "PI033[*"
+
+  .PI034:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI034[*":
+    @structname: "PI034[*"
+
+  .PI036:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI036[*":
+    @structname: "PI036[*"
+
+  .PI048:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI048[*":
+    @structname: "PI048[*"
+
+  .PI066:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI066[*":
+    @structname: "PI066[*"
+
+  .PI068:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI068[*":
+    @structname: "PI068[*"
+
+  .PI072:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI072[*":
+    @structname: "PI072[*"
+
+  .PI080:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI080[*":
+    @structname: "PI080[*"
+
+  .PI096:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI096[*":
+    @structname: "PI096[*"
+
+  .PI129:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI129[*":
+    @structname: "PI129[*"
+
+  .PI132:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI132[*":
+    @structname: "PI132[*"
+
+  .PI136:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI136[*":
+    @structname: "PI136[*"
+
+  .PI144:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI144[*":
+    @structname: "PI144[*"
+
+  .PI160:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI160[*":
+    @structname: "PI160[*"
+
+  .PI192:
+    @datatype: float64
+    @array: "3,2"
+
+  ."PI192[*":
+    @structname: "PI192[*"
+
+  .PI007:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI007[*":
+    @structname: "PI007[*"
+
+  .PI011:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI011[*":
+    @structname: "PI011[*"
+
+  .PI013:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI013[*":
+    @structname: "PI013[*"
+
+  .PI014:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI014[*":
+    @structname: "PI014[*"
+
+  .PI019:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI019[*":
+    @structname: "PI019[*"
+
+  .PI025:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI025[*":
+    @structname: "PI025[*"
+
+  .PI026:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI026[*":
+    @structname: "PI026[*"
+
+  .PI035:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI035[*":
+    @structname: "PI035[*"
+
+  .PI037:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI037[*":
+    @structname: "PI037[*"
+
+  .PI038:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI038[*":
+    @structname: "PI038[*"
+
+  .PI049:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI049[*":
+    @structname: "PI049[*"
+
+  .PI050:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI050[*":
+    @structname: "PI050[*"
+
+  .PI070:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI070[*":
+    @structname: "PI070[*"
+
+  .PI074:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI074[*":
+    @structname: "PI074[*"
+
+  .PI076:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI076[*":
+    @structname: "PI076[*"
+
+  .PI082:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI082[*":
+    @structname: "PI082[*"
+
+  .PI088:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI088[*":
+    @structname: "PI088[*"
+
+  .PI098:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI098[*":
+    @structname: "PI098[*"
+
+  .PI100:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI100[*":
+    @structname: "PI100[*"
+
+  .PI112:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI112[*":
+    @structname: "PI112[*"
+
+  .PI133:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI133[*":
+    @structname: "PI133[*"
+
+  .PI137:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI137[*":
+    @structname: "PI137[*"
+
+  .PI140:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI140[*":
+    @structname: "PI140[*"
+
+  .PI145:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI145[*":
+    @structname: "PI145[*"
+
+  .PI152:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI152[*":
+    @structname: "PI152[*"
+
+  .PI161:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI161[*":
+    @structname: "PI161[*"
+
+  .PI164:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI164[*":
+    @structname: "PI164[*"
+
+  .PI176:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI176[*":
+    @structname: "PI176[*"
+
+  .PI196:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI196[*":
+    @structname: "PI196[*"
+
+  .PI200:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI200[*":
+    @structname: "PI200[*"
+
+  .PI208:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI208[*":
+    @structname: "PI208[*"
+
+  .PI224:
+    @datatype: float64
+    @array: "3,3"
+
+  ."PI224[*":
+    @structname: "PI224[*"
+
+  .PI015:
+    @datatype: float64
+    @array: "3,4"
+
+  ."PI015[*":
+    @structname: "PI015[*"
+
+  .PI027:
+    @datatype: float64
+    @array: "3,4"
+
+  ."PI027[*":
+    @structname: "PI027[*"
+
+  .PI039:
+    @datatype: float64
+    @array: "3,4"
+
+  ."PI039[*":
+    @structname: "PI039[*"
+
+  .PI051:
+    @datatype: float64
+    @array: "3,4"
+
+  ."PI051[*":
+    @structname: "PI051[*"
+
+  .PI078:
+    @datatype: float64
+    @array: "3,4"
+
+  ."PI078[*":
+    @structname: "PI078[*"
+
+  .PI102:
+    @datatype: float64
+    @array: "3,4"
+
+  ."PI102[*":
+    @structname: "PI102[*"
+
+  .PI114:
+    @datatype: float64
+    @array: "3,4"
+
+  ."PI114[*":
+    @structname: "PI114[*"
+
+  .PI141:
+    @datatype: float64
+    @array: "3,4"
+
+  ."PI141[*":
+    @structname: "PI141[*"
+
+  .PI153:
+    @datatype: float64
+    @array: "3,4"
+
+  ."PI153[*":
+    @structname: "PI153[*"
+
+  .PI177:
+    @datatype: float64
+    @array: "3,4"
+
+  ."PI177[*":
+    @structname: "PI177[*"
+
+  .PI204:
+    @datatype: float64
+    @array: "3,4"
+
+  ."PI204[*":
+    @structname: "PI204[*"
+
+  .PI216:
+    @datatype: float64
+    @array: "3,4"
+
+  ."PI216[*":
+    @structname: "PI216[*"
+
+  .PI228:
+    @datatype: float64
+    @array: "3,4"
+
+  ."PI228[*":
+    @structname: "PI228[*"
+
+  .PI240:
+    @datatype: float64
+    @array: "3,4"
+
+  ."PI240[*":
+    @structname: "PI240[*"
+
+  .FailTimeOut:
+    @description: "BlindZoneTimer Default"
+    @datatype: uint16
+
+  .EnableRIU2Tlm:
+    @datatype: uint16
+    @array: DBT_NUM_OF_CSS
+
+  ."EnableRIU2Tlm[*":
+    @structname: "EnableRIU2Tlm[*"
+
+  .SpareWord2:
+    @datatype: uint16
+
+  .Fdc:
+    @datatype: ac_csstable_fdc_type
+
+  ."Fdc.*":
+    @structname: "Fdc.*"
+
+  .CurrentTestCnt[0]:
+    @structname: Fdc.CurrentTestCnt[0]
+
+  .CurrentTestCnt[1]:
+    @structname: Fdc.CurrentTestCnt[1]
+
+  .CurrentTestCnt[2]:
+    @structname: Fdc.CurrentTestCnt[2]
+
+  .CurrentTestCnt[3]:
+    @structname: Fdc.CurrentTestCnt[3]
+
+  .CurrentTestCnt[4]:
+    @structname: Fdc.CurrentTestCnt[4]
+
+  .CurrentTestCnt[5]:
+    @structname: Fdc.CurrentTestCnt[5]
+
+  .CurrentTestCnt[6]:
+    @structname: Fdc.CurrentTestCnt[6]
+
+  .CurrentTestCnt[7]:
+    @structname: Fdc.CurrentTestCnt[7]
+
+  .MaxDetectorCurrent[0]:
+    @structname: Fdc.MaxDetectorCurrent[0]
+
+  .MaxDetectorCurrent[1]:
+    @structname: Fdc.MaxDetectorCurrent[1]
+
+  .MaxDetectorCurrent[2]:
+    @structname: Fdc.MaxDetectorCurrent[2]
+
+  .MaxDetectorCurrent[3]:
+    @structname: Fdc.MaxDetectorCurrent[3]
+
+  .MaxDetectorCurrent[4]:
+    @structname: Fdc.MaxDetectorCurrent[4]
+
+  .MaxDetectorCurrent[5]:
+    @structname: Fdc.MaxDetectorCurrent[5]
+
+  .MaxDetectorCurrent[6]:
+    @structname: Fdc.MaxDetectorCurrent[6]
+
+  .MaxDetectorCurrent[7]:
+    @structname: Fdc.MaxDetectorCurrent[7]
+}
+
+table ACGLOBAL {
+  @buildstruct!
+  @fsw.component: ACGLOBAL
+  @id: 28
+
+  .data:
+    @datatype: data
+    @array: 13876
+}
+
+table AcGpsTable {
+  @description: "GPS Parameter Table"
+  @buildstruct!
+  @fsw.component: ACGPSTABLE
+  @id: 29
+  
+  .Fdc:
+    @datatype: ac_gps_table_fdc_type
+
+  ."Fdc.*":
+    @structname: "Fdc.*"
+}
+
+table AcMplTable {
+  @description: "MPL Parameter Table"
+  @buildstruct!
+  @fsw.component: ACMPLTABLE
+  @id: 30
+  
+  .IscAz:
+    @datatype: uMatrix
+
+  .IscEl:
+    @datatype: uMatrix
+
+  .MassAz:
+    @datatype: float64
+
+  .MassEl:
+    @datatype: float64
+
+  .AzCm:
+    @datatype: uVector
+
+  .ElCm:
+    @datatype: uVector
+
+  .AzFrameAttach:
+    @datatype: uVector
+
+  .ElFrameAttach:
+    @datatype: uVector
+}
+
+table AcIruTable {
+  @description: "Inertial Reference Unit Parameter Table"
+  @buildstruct!
+  @fsw.component: ACIRUTABLE
+  @id: 21
+
+  .TimeCntMax:
+    @description: "Maximum Time Count, cnt"
+    @units: cnt
+    @datatype: sint32
+
+  .DcmBdyToGyr:
+    @datatype: uVector
+    @array: DBT_NUM_OF_GYR
+
+  ."DcmBdyToGyr[*":
+    @structname: "DcmBdyToGyr[*"
+
+  .DcmBdyToAcc:
+    @datatype: uVector
+    @array: DBT_NUM_OF_ACC
+
+  ."DcmBdyToAcc[*":
+    @structname: "DcmBdyToAcc[*"
+
+  .GyrAngleWhiteNoise:
+    @description: "Gyro Angle White Noise For KF Q, rad^2"
+    @units: "rad^2"
+    @datatype: float64
+
+  .GyrAngleRandomWalk:
+    @description: "Gyro Angle Random Walk For KF Q, rad^2/sec"
+    @units: "rad^2/sec"
+    @datatype: float64
+
+  .GyrRateRandomWalk:
+    @description: "Gyro Rate Random Walk For KF Q, rad^2/sec^3"
+    @units: "rad^2/sec^3"
+    @datatype: float64
+
+  .ScaleFactor:
+    @datatype: float64
+    @array: "2,DBT_NUM_OF_GYR"
+
+  ."ScaleFactor[*":
+    @structname: "ScaleFactor[*"
+
+  .AccelScaleFactor:
+    @datatype: float64
+    @array: DBT_NUM_OF_ACC
+
+  ."AccelScaleFactor[*":
+    @structname: "AccelScaleFactor[*"
+
+  .DefaultGyrBias:
+    @datatype: float64
+    @array: DBT_NUM_OF_GYR
+
+  ."DefaultGyrBias[*":
+    @structname: "DefaultGyrBias[*"
+
+  .DefaultAccBias:
+    @datatype: float64
+    @array: DBT_NUM_OF_ACC
+
+  ."DefaultAccBias[*":
+    @structname: "DefaultAccBias[*"
+
+  .IruBiasLmt:
+    @datatype: uVector
+
+  ."IruBiasLmt.*":
+    @structname: "IruBiasLmt.*"
+
+  .TimeScaleFactor:
+    @description: "Time Scale Factor"
+    @units: "sec/cnt"
+    @datatype: float64
+
+  .WarmUpTime:
+    @description: "Warm Up Time, sec"
+    @units: sec
+    @datatype: float64
+
+  .Fdc:
+    @datatype: ac_iru_table_fdc_type
+
+  ."Fdc.*":
+    @structname: "Fdc.*"
+}
+
+table AcJetTable {
+  @description: "Jet Parameter Table"
+  @buildstruct!
+  @fsw.component: ACJETTABLE
+  @id: 22
+
+  .ControlJet:
+    @datatype: uint16
+    @array: "DBT_NUM_OF_CNT_JET,DBT_MAX_CONTROL_JETS"
+    @conversion: ac_jet_id
+
+  .ControlJet[0][0]:
+    @description: "Jet Control Sets (1,1)"
+    @units: "ND,NORTH_ALL_EAST_ALL,#1"
+    @default: REA3
+
+  .ControlJet[0][1]:
+    @default: REA5
+
+  .ControlJet[0][2]:
+    @default: REA11
+
+  .ControlJet[0][3]:
+    @default: REA9
+
+  .ControlJet[0][4]:
+    @default: REA1
+
+  .ControlJet[0][5]:
+    @default: REA7
+
+  .ControlJet[0][6]:
+    @default: REA4
+
+  .ControlJet[0][7]:
+    @default: REA10
+
+  .ControlJet[1][0]:
+    @description: "Jet Control Sets (2,1)"
+    @units: "ND,NORTH_ALL_WEST_ALL,#1"
+    @default: REA3
+
+  .ControlJet[1][1]:
+    @default: REA5
+
+  .ControlJet[1][2]:
+    @default: REA11
+
+  .ControlJet[1][3]:
+    @default: REA9
+
+  .ControlJet[1][4]:
+    @default: REA8
+
+  .ControlJet[1][5]:
+    @default: REA2
+
+  .ControlJet[1][6]:
+    @default: REA12
+
+  .ControlJet[1][7]:
+    @default: REA6
+
+  .ControlJet[2][0]:
+    @description: "Jet Control Sets (3,1)"
+    @units: "ND,NORTH_ALL_EAST_WEST_ODD,#1"
+    @default: REA2
+
+  .ControlJet[2][1]:
+    @default: REA8
+
+  .ControlJet[2][2]:
+    @default: REA12
+
+  .ControlJet[2][3]:
+    @default: REA6
+
+  .ControlJet[2][4]:
+    @default: REA10
+
+  .ControlJet[2][5]:
+    @default: REA4
+
+  .ControlJet[2][6]:
+    @default: NULL_JET
+
+  .ControlJet[2][7]:
+    @default: NULL_JET
+
+  .ControlJet[3][0]:
+    @description: "Jet Control Sets (4,1)"
+    @units: "ND,NORTH_ALL_EAST_WEST_EVEN,#1"
+    @default: REA3
+
+  .ControlJet[3][1]:
+    @default: REA5
+
+  .ControlJet[3][2]:
+    @default: REA11
+
+  .ControlJet[3][3]:
+    @default: REA9
+
+  .ControlJet[3][4]:
+    @default: REA8
+
+  .ControlJet[3][5]:
+    @default: REA2
+
+  .ControlJet[3][6]:
+    @default: REA12
+
+  .ControlJet[3][7]:
+    @default: REA6
+
+  .ControlJet[4][0]:
+    @description: "Jet Control Sets (5,1)"
+    @units: "ND,NORTH_ALL_SPARE,#1"
+    @default: REA3
+
+  .ControlJet[4][1]:
+    @default: REA5
+
+  .ControlJet[4][2]:
+    @default: REA11
+
+  .ControlJet[4][3]:
+    @default: REA9
+
+  .ControlJet[4][4]:
+    @default: REA8
+
+  .ControlJet[4][5]:
+    @default: REA2
+
+  .ControlJet[4][6]:
+    @default: REA12
+
+  .ControlJet[4][7]:
+    @default: REA6
+
+  .ControlJet[5][0]:
+    @description: "Jet Control Sets (6,1)"
+    @units: "ND,EAST_ALL_NORTH_ALL,#1"
+    @default: REA3
+
+  .ControlJet[5][1]:
+    @default: REA5
+
+  .ControlJet[5][2]:
+    @default: REA9
+
+  .ControlJet[5][3]:
+    @default: REA11
+
+  .ControlJet[5][4]:
+    @default: REA1
+
+  .ControlJet[5][5]:
+    @default: REA7
+
+  .ControlJet[5][6]:
+    @default: NULL_JET
+
+  .ControlJet[5][7]:
+    @default: NULL_JET
+
+  .ControlJet[6][0]:
+    @description: "Jet Control Sets (7,1)"
+    @units: "ND,WEST_ALL_NORTH_ALL,#1"
+    @default: REA3
+
+  .ControlJet[6][1]:
+    @default: REA5
+
+  .ControlJet[6][2]:
+    @default: REA9
+
+  .ControlJet[6][3]:
+    @default: REA11
+
+  .ControlJet[6][4]:
+    @default: REA7
+
+  .ControlJet[6][5]:
+    @default: REA1
+
+  .ControlJet[6][6]:
+    @default: REA10
+
+  .ControlJet[6][7]:
+    @default: REA4
+
+  .ControlJet[7][0]:
+    @description: "Jet Control Sets (8,1)"
+    @units: "ND,EAST_WEST_NORTH_ODD,#1"
+    @default: REA2
+
+  .ControlJet[7][1]:
+    @default: REA8
+
+  .ControlJet[7][2]:
+    @default: REA12
+
+  .ControlJet[7][3]:
+    @default: REA6
+
+  .ControlJet[7][4]:
+    @default: REA7
+
+  .ControlJet[7][5]:
+    @default: REA1
+
+  .ControlJet[7][6]:
+    @default: REA4
+
+  .ControlJet[7][7]:
+    @default: REA10
+
+  .ControlJet[8][0]:
+    @description: "Jet Control Sets (9,1)"
+    @units: "ND,EAST_WEST_NORTH_EVEN,#1"
+    @default: REA2
+
+  .ControlJet[8][1]:
+    @default: REA8
+
+  .ControlJet[8][2]:
+    @default: REA12
+
+  .ControlJet[8][3]:
+    @default: REA6
+
+  .ControlJet[8][4]:
+    @default: REA7
+
+  .ControlJet[8][5]:
+    @default: REA1
+
+  .ControlJet[8][6]:
+    @default: REA4
+
+  .ControlJet[8][7]:
+    @default: REA10
+
+  .ControlJet[9][0]:
+    @description: "Jet Control Sets (10,1)"
+    @units: "ND,EAST_WEST_SPARE,#1"
+    @default: REA2
+
+  .ControlJet[9][1]:
+    @default: REA8
+
+  .ControlJet[9][2]:
+    @default: REA12
+
+  .ControlJet[9][3]:
+    @default: REA6
+
+  .ControlJet[9][4]:
+    @default: REA7
+
+  .ControlJet[9][5]:
+    @default: REA1
+
+  .ControlJet[9][6]:
+    @default: REA4
+
+  .ControlJet[9][7]:
+    @default: REA10
+
+  .ControlJet[10][0]:
+    @description: "Jet Control Sets (11,1)"
+    @units: "ND,BASE_ALL_EAST_WEST_ODD,#1"
+    @default: REA2
+
+  .ControlJet[10][1]:
+    @default: REA8
+
+  .ControlJet[10][2]:
+    @default: REA12
+
+  .ControlJet[10][3]:
+    @default: REA6
+
+  .ControlJet[10][4]:
+    @default: REA7
+
+  .ControlJet[10][5]:
+    @default: REA1
+
+  .ControlJet[10][6]:
+    @default: REA4
+
+  .ControlJet[10][7]:
+    @default: REA10
+
+  .ControlJet[11][0]:
+    @description: "Jet Control Sets (12,1)"
+    @units: "ND,BASE_ALL_EAST_WEST_EVEN,#1"
+    @default: REA10
+
+  .ControlJet[11][1]:
+    @default: REA7
+
+  .ControlJet[11][2]:
+    @default: REA4
+
+  .ControlJet[11][3]:
+    @default: REA1
+
+  .ControlJet[11][4]:
+    @default: REA3
+
+  .ControlJet[11][5]:
+    @default: REA5
+
+  .ControlJet[11][6]:
+    @default: REA9
+
+  .ControlJet[11][7]:
+    @default: REA11
+
+  .ControlJet[12][0]:
+    @description: "Jet Control Sets (13,1)"
+    @units: "ND,BASE_DMT_EAST_WEST_ODD,#1"
+    @default: REA10
+
+  .ControlJet[12][1]:
+    @default: REA7
+
+  .ControlJet[12][2]:
+    @default: REA4
+
+  .ControlJet[12][3]:
+    @default: REA1
+
+  .ControlJet[12][4]:
+    @default: REA3
+
+  .ControlJet[12][5]:
+    @default: REA5
+
+  .ControlJet[12][6]:
+    @default: REA9
+
+  .ControlJet[12][7]:
+    @default: REA11
+
+  .ControlJet[13][0]:
+    @description: "Jet Control Sets (14,1)"
+    @units: "ND,BASE_DMT_EAST_WEST_EVEN,#1"
+    @default: REA10
+
+  .ControlJet[13][1]:
+    @default: REA7
+
+  .ControlJet[13][2]:
+    @default: REA4
+
+  .ControlJet[13][3]:
+    @default: REA1
+
+  .ControlJet[13][4]:
+    @default: REA3
+
+  .ControlJet[13][5]:
+    @default: REA5
+
+  .ControlJet[13][6]:
+    @default: REA9
+
+  .ControlJet[13][7]:
+    @default: REA11
+
+  .ControlJet[14][0]:
+    @description: "Jet Control Sets (15,1)"
+    @units: "ND,BASE_SPARE,#1"
+    @default: REA10
+
+  .ControlJet[14][1]:
+    @default: REA7
+
+  .ControlJet[14][2]:
+    @default: REA4
+
+  .ControlJet[14][3]:
+    @default: REA1
+
+  .ControlJet[14][4]:
+    @default: REA3
+
+  .ControlJet[14][5]:
+    @default: REA5
+
+  .ControlJet[14][6]:
+    @default: REA9
+
+  .ControlJet[14][7]:
+    @default: REA11
+
+  .PosDeltaVJet:
+    @datatype: uint16
+    @array: "DBT_NUM_OF_DV_JET,DBT_MAX_DELTA_V_JETS"
+    @conversion: ac_jet_id
+    
+  .PosDeltaVJet[0][0]:
+    @description: DV_BRE_PRI
+    @units: ND
+    @default: REA1
+
+  .PosDeltaVJet[0][1]:
+    @description: DV_BRE_PRI
+    @units: ND
+    @default: REA7
+
+  .PosDeltaVJet[1][0]:
+    @description: DV_BRE_RED
+    @units: ND
+    @default: REA1
+
+  .PosDeltaVJet[1][1]:
+    @description: DV_BRE_RED
+    @units: ND
+    @default: REA7
+
+  .PosDeltaVJet[2][0]:
+    @description: DV_REA_NEGXBDY
+    @units: ND
+    @default: REA6
+
+  .PosDeltaVJet[2][1]:
+    @description: DV_REA_NEGXBDY
+    @units: ND
+    @default: REA8
+
+  .PosDeltaVJet[3][0]:
+    @description: DV_REA_POSXBDY
+    @units: ND
+    @default: REA2
+
+  .PosDeltaVJet[3][1]:
+    @description: DV_REA_POSXBDY
+    @units: ND
+    @default: REA12
+
+  .PosDeltaVJet[4][0]:
+    @description: DV_REA_POSYBDY
+    @units: ND
+    @default: REA9
+
+  .PosDeltaVJet[4][1]:
+    @description: DV_REA_POSYBDY
+    @units: ND
+    @default: REA11
+
+  .PosDeltaVJet[5][0]:
+    @description: DV_REA_NEGYBDY
+    @units: ND
+    @default: REA3
+
+  .PosDeltaVJet[5][1]:
+    @description: DV_REA_NEGYBDY
+    @units: ND
+    @default: REA5
+
+  .PosDeltaVJet[6][0]:
+    @description: DV_REA_POSZBDY
+    @units: ND
+    @default: REA1
+
+  .PosDeltaVJet[6][1]:
+    @description: DV_REA_POSZBDY
+    @units: ND
+    @default: REA7
+
+  .PosDeltaVJet[7][0]:
+    @description: DV_REA_NEGZBDY
+    @units: ND
+    @default: REA4
+
+  .PosDeltaVJet[7][1]:
+    @description: DV_REA_NEGZBDY
+    @units: ND
+    @default: REA10
+
+  .NegDeltaVJet:
+    @datatype: uint16
+    @array: "DBT_NUM_OF_DV_JET,DBT_MAX_DELTA_V_JETS"
+    @conversion: ac_jet_id
+
+  .NegDeltaVJet[0][0]:
+    @description: DV_BRE_PRI
+    @units: ND
+    @default: REA4
+
+  .NegDeltaVJet[0][1]:
+    @description: DV_BRE_PRI
+    @units: ND
+    @default: REA10
+
+  .NegDeltaVJet[1][0]:
+    @description: DV_BRE_RED
+    @units: ND
+    @default: REA4
+
+  .NegDeltaVJet[1][1]:
+    @description: DV_BRE_RED
+    @units: ND
+    @default: REA10
+
+  .NegDeltaVJet[2][0]:
+    @description: DV_REA_NEGXBDY
+    @units: ND
+    @default: REA2
+
+  .NegDeltaVJet[2][1]:
+    @description: DV_REA_NEGXBDY
+    @units: ND
+    @default: REA12
+
+  .NegDeltaVJet[3][0]:
+    @description: DV_REA_POSXBDY
+    @units: ND
+    @default: REA6
+
+  .NegDeltaVJet[3][1]:
+    @description: DV_REA_POSXBDY
+    @units: ND
+    @default: REA8
+
+  .NegDeltaVJet[4][0]:
+    @description: DV_REA_POSYBDY
+    @units: ND
+    @default: REA3
+
+  .NegDeltaVJet[4][1]:
+    @description: DV_REA_POSYBDY
+    @units: ND
+    @default: REA5
+
+  .NegDeltaVJet[5][0]:
+    @description: DV_REA_NEGYBDY
+    @units: ND
+    @default: REA9
+
+  .NegDeltaVJet[5][1]:
+    @description: DV_REA_NEGYBDY
+    @units: ND
+    @default: REA11
+
+  .NegDeltaVJet[6][0]:
+    @description: DV_REA_POSZBDY
+    @units: ND
+    @default: REA4
+
+  .NegDeltaVJet[6][1]:
+    @description: DV_REA_POSZBDY
+    @units: ND
+    @default: REA10
+
+  .NegDeltaVJet[7][0]:
+    @description: DV_REA_NEGZBDY
+    @units: ND
+    @default: REA1
+
+  .NegDeltaVJet[7][1]:
+    @description: DV_REA_NEGZBDY
+    @units: ND
+    @default: REA7
+
+  .ControlAxis:
+    @datatype: uint16
+    @array: "DBT_NUM_OF_CNT_JET,3"
+    @conversion: ac_axis
+    
+  .ControlAxis[0][0]:
+    @description: CNT_HIGH_TORQUE
+    @units: ND
+    @default: Z
+
+  .ControlAxis[0][1]:
+    @description: CNT_HIGH_TORQUE
+    @units: ND
+    @default: X
+
+  .ControlAxis[0][2]:
+    @description: CNT_HIGH_TORQUE
+    @units: ND
+    @default: Y
+
+  .ControlAxis[1][0]:
+    @description: CNT_MED_TORQUE
+    @units: ND
+    @default: Z
+
+  .ControlAxis[1][1]:
+    @description: CNT_MED_TORQUE
+    @units: ND
+    @default: X
+
+  .ControlAxis[1][2]:
+    @description: CNT_MED_TORQUE
+    @units: ND
+    @default: Y
+
+  .ControlAxis[2][0]:
+    @description: CNT_REA_EVEN
+    @units: ND
+    @default: Y
+
+  .ControlAxis[2][1]:
+    @description: CNT_REA_EVEN
+    @units: ND
+    @default: Z
+
+  .ControlAxis[2][2]:
+    @description: CNT_REA_EVEN
+    @units: ND
+    @default: X
+
+  .ControlAxis[3][0]:
+    @description: CNT_XZ_Y_SPARE_1
+    @units: ND
+    @default: Z
+
+  .ControlAxis[3][1]:
+    @description: CNT_XZ_Y_SPARE_1
+    @units: ND
+    @default: X
+
+  .ControlAxis[3][2]:
+    @description: CNT_XZ_Y_SPARE_1
+    @units: ND
+    @default: Y
+
+  .ControlAxis[4][0]:
+    @description: CNT_XZ_Y_SPARE_2
+    @units: ND
+    @default: Z
+
+  .ControlAxis[4][1]:
+    @description: CNT_XZ_Y_SPARE_2
+    @units: ND
+    @default: X
+
+  .ControlAxis[4][2]:
+    @description: CNT_XZ_Y_SPARE_2
+    @units: ND
+    @default: Y
+
+  .ControlAxis[5][0]:
+    @description: CNT_REA_ODD
+    @units: ND
+    @default: Z
+
+  .ControlAxis[5][1]:
+    @description: CNT_REA_ODD
+    @units: ND
+    @default: X
+
+  .ControlAxis[5][2]:
+    @description: CNT_REA_ODD
+    @units: ND
+    @default: Y
+
+  .ControlAxis[6][0]:
+    @description: CNT_REA_ODD_Z_EVEN
+    @units: ND
+    @default: Z
+
+  .ControlAxis[6][1]:
+    @description: CNT_REA_ODD_Z_EVEN
+    @units: ND
+    @default: X
+
+  .ControlAxis[6][2]:
+    @description: CNT_REA_ODD_Z_EVEN
+    @units: ND
+    @default: Y
+
+  .ControlAxis[7][0]:
+    @description: CNT_YZ_X_SPARE_1
+    @units: ND
+    @default: Y
+
+  .ControlAxis[7][1]:
+    @description: CNT_YZ_X_SPARE_1
+    @units: ND
+    @default: Z
+
+  .ControlAxis[7][2]:
+    @description: CNT_YZ_X_SPARE_1
+    @units: ND
+    @default: X
+
+  .ControlAxis[8][0]:
+    @units: ND
+    @default: Y
+
+  .ControlAxis[8][1]:
+    @units: ND
+    @default: Z
+
+  .ControlAxis[8][2]:
+    @units: ND
+    @default: X
+
+  .ControlAxis[9][0]:
+    @units: ND
+    @default: Y
+
+  .ControlAxis[9][1]:
+    @units: ND
+    @default: Z
+
+  .ControlAxis[9][2]:
+    @units: ND
+    @default: X
+
+  .ControlAxis[10][0]:
+    @description: CNT_LOW_TORQUE
+    @units: ND
+    @default: Y
+
+  .ControlAxis[10][1]:
+    @description: CNT_LOW_TORQUE
+    @units: ND
+    @default: Z
+
+  .ControlAxis[10][2]:
+    @description: CNT_LOW_TORQUE
+    @units: ND
+    @default: X
+
+  .ControlAxis[11][0]:
+    @description: CNT_XY_Z_SPARE_1
+    @units: ND
+    @default: X
+
+  .ControlAxis[11][1]:
+    @description: CNT_XY_Z_SPARE_1
+    @units: ND
+    @default: Y
+
+  .ControlAxis[11][2]:
+    @description: CNT_XY_Z_SPARE_1
+    @units: ND
+    @default: Z
+
+  .ControlAxis[12][0]:
+    @units: ND
+    @default: X
+
+  .ControlAxis[12][1]:
+    @units: ND
+    @default: Y
+
+  .ControlAxis[12][2]:
+    @units: ND
+    @default: Z
+
+  .ControlAxis[13][0]:
+    @units: ND
+    @default: X
+
+  .ControlAxis[13][1]:
+    @units: ND
+    @default: Y
+
+  .ControlAxis[13][2]:
+    @units: ND
+    @default: Z
+
+  .ControlAxis[14][0]:
+    @units: ND
+    @default: X
+
+  .ControlAxis[14][1]:
+    @units: ND
+    @default: Y
+
+  .ControlAxis[14][2]:
+    @units: ND
+    @default: Z
+
+  .MinNumOfLsb:
+    @datatype: uint16
+    @array: "ac_jet_id.NUM_OF_JET"
+
+  ."MinNumOfLsb[*":
+    @structname: "MinNumOfLsb[*"
+
+  .MinNumOfLsb[0]:
+    @description: "Minimum Number Of LSBs To Fire Jet"
+    @units: cnt
+    @default: 16
+
+  .MinNumOfLsb[1]:
+    @description: "Minimum Number Of LSBs To Fire Jet"
+    @units: cnt
+    @default: 16
+
+  .MinNumOfLsb[2]:
+    @description: "Minimum Number Of LSBs To Fire Jet"
+    @units: cnt
+    @default: 16
+
+  .MinNumOfLsb[3]:
+    @description: "Minimum Number Of LSBs To Fire Jet"
+    @units: cnt
+    @default: 16
+
+  .MinNumOfLsb[4]:
+    @description: "Minimum Number Of LSBs To Fire Jet"
+    @units: cnt
+    @default: 16
+
+  .MinNumOfLsb[5]:
+    @description: "Minimum Number Of LSBs To Fire Jet"
+    @units: cnt
+    @default: 16
+
+  .MinNumOfLsb[6]:
+    @description: "Minimum Number Of LSBs To Fire Jet"
+    @units: cnt
+    @default: 16
+
+  .MinNumOfLsb[7]:
+    @description: "Minimum Number Of LSBs To Fire Jet"
+    @units: cnt
+    @default: 16
+
+  .MinNumOfLsb[8]:
+    @description: "Minimum Number Of LSBs To Fire Jet"
+    @units: cnt
+    @default: 16
+
+  .MinNumOfLsb[9]:
+    @description: "Minimum Number Of LSBs To Fire Jet"
+    @units: cnt
+    @default: 16
+
+  .MinNumOfLsb[10]:
+    @description: "Minimum Number Of LSBs To Fire Jet"
+    @units: cnt
+    @default: 16
+
+  .MinNumOfLsb[11]:
+    @description: "Minimum Number Of LSBs To Fire Jet"
+    @units: cnt
+    @default: 16
+
+  .MinNumOfLsb[12]:
+    @description: "Minimum Number Of LSBs To Fire Jet"
+    @units: cnt
+    @default: 50
+
+  .MinNumOfLsb[13]:
+    @description: "Minimum Number Of LSBs To Fire Jet"
+    @units: cnt
+    @default: 50
+
+  .SustFireCnts:
+    @description: "Counts Added To Timer Load To Sustain Firing, cnt"
+    @units: cnt
+    @datatype: uint16
+    @default: 3
+
+  .EnableRwaTorqueMix:
+    @datatype: uint16
+    @array: "DBT_NUM_SC_CFG,DBT_NUM_AC_MODE"
+    @conversion: True_False
+
+  ."EnableRwaTorqueMix[*":
+    @structname: "EnableRwaTorqueMix[*"
+
+  .EnableRwaTorqueMix[0][0]:
+    @default: False
+
+  .EnableRwaTorqueMix[0][1]:
+    @default: False
+
+  .EnableRwaTorqueMix[0][2]:
+    @default: False
+
+  .EnableRwaTorqueMix[0][3]:
+    @default: False
+
+  .EnableRwaTorqueMix[0][4]:
+    @default: False
+
+  .EnableRwaTorqueMix[0][5]:
+    @default: False
+
+  .EnableRwaTorqueMix[0][6]:
+    @default: False
+
+  .EnableRwaTorqueMix[0][7]:
+    @default: False
+
+  .EnableRwaTorqueMix[1][0]:
+    @default: False
+
+  .EnableRwaTorqueMix[1][1]:
+    @default: False
+
+  .EnableRwaTorqueMix[1][2]:
+    @default: False
+
+  .EnableRwaTorqueMix[1][3]:
+    @default: False
+
+  .EnableRwaTorqueMix[1][4]:
+    @default: False
+
+  .EnableRwaTorqueMix[1][5]:
+    @default: False
+
+  .EnableRwaTorqueMix[1][6]:
+    @default: False
+
+  .EnableRwaTorqueMix[1][7]:
+    @default: False
+
+  .EnableRwaTorqueMix[2][0]:
+    @default: False
+
+  .EnableRwaTorqueMix[2][1]:
+    @default: False
+
+  .EnableRwaTorqueMix[2][2]:
+    @default: False
+
+  .EnableRwaTorqueMix[2][3]:
+    @default: False
+
+  .EnableRwaTorqueMix[2][4]:
+    @default: True
+
+  .EnableRwaTorqueMix[2][5]:
+    @default: True
+
+  .EnableRwaTorqueMix[2][6]:
+    @default: True
+
+  .EnableRwaTorqueMix[2][7]:
+    @default: True
+
+  .DeltaVTransitionCnt:
+    @description: "Transition From Delta V Count, cnt"
+    @units: cnt
+    @datatype: sint32
+    @default: "10*DBT_NUM_AC_CYCLES"
+
+  .EnableRIU2JetCmd:
+    @description: "Flag To Enable RIU2 Jet Commands"
+    @datatype: uint16
+    @conversion: True_False
+    @default: False
+
+  .SpareWord:
+    @datatype: uint16
+    @default: 0
+
+  .OffDelay:
+    @datatype: float64
+    @array: "ac_jet_id.NUM_OF_JET"
+
+  ."OffDelay[*":
+    @structname: "OffDelay[*"
+
+  .OffDelay[0]:
+    @default: 0.012
+
+  .OffDelay[1]:
+    @default: 0.012
+
+  .OffDelay[2]:
+    @default: 0.012
+
+  .OffDelay[3]:
+    @default: 0.012
+
+  .OffDelay[4]:
+    @default: 0.012
+
+  .OffDelay[5]:
+    @default: 0.012
+
+  .OffDelay[6]:
+    @default: 0.012
+
+  .OffDelay[7]:
+    @default: 0.012
+
+  .OffDelay[8]:
+    @default: 0.012
+
+  .OffDelay[9]:
+    @default: 0.012
+
+  .OffDelay[10]:
+    @default: 0.012
+
+  .OffDelay[11]:
+    @default: 0.012
+
+  .OffDelay[12]:
+    @default: 0
+
+  .OffDelay[13]:
+    @default: 0
+
+  .JetSecPerLsb:
+    @description: "Jet Seconds Per LSB, sec"
+    @units: sec
+    @datatype: float64
+    @default: 0.001
+
+  .JetSecondsRemainingThr:
+    @description: "Remaining Jet Seconds Threshold, sec"
+    @units: sec
+    @datatype: float64
+    @default: 0.05
+
+  .JetForceMag:
+    @datatype: float64
+    @array: "ac_jet_id.NUM_OF_JET"
+
+  ."JetForceMag[*":
+    @structname: "JetForceMag[*"
+
+  .JetForceMag[0]:
+    @description: "Jet Thrust"
+    @units: N
+    @default: 0.6958
+
+  .JetForceMag[1]:
+    @description: "Jet Thrust"
+    @units: N
+    @default: 0.6991
+
+  .JetForceMag[2]:
+    @description: "Jet Thrust"
+    @units: N
+    @default: 0.7079
+
+  .JetForceMag[3]:
+    @description: "Jet Thrust"
+    @units: N
+    @default: 0.6958
+
+  .JetForceMag[4]:
+    @description: "Jet Thrust"
+    @units: N
+    @default: 0.6879
+
+  .JetForceMag[5]:
+    @description: "Jet Thrust"
+    @units: N
+    @default: 0.6884
+
+  .JetForceMag[6]:
+    @description: "Jet Thrust"
+    @units: N
+    @default: 0.688
+
+  .JetForceMag[7]:
+    @description: "Jet Thrust"
+    @units: N
+    @default: 0.6882
+
+  .JetForceMag[8]:
+    @description: "Jet Thrust"
+    @units: N
+    @default: 0.6938
+
+  .JetForceMag[9]:
+    @description: "Jet Thrust"
+    @units: N
+    @default: 0.6926
+
+  .JetForceMag[10]:
+    @description: "Jet Thrust"
+    @units: N
+    @default: 0.6822
+
+  .JetForceMag[11]:
+    @description: "Jet Thrust"
+    @units: N
+    @default: 0.6827
+
+  .JetForceMag[12]:
+    @description: "Jet Thrust"
+    @units: N
+    @default: 21.29
+
+  .JetForceMag[13]:
+    @description: "Jet Thrust"
+    @units: N
+    @default: 21.29
+
+  .JetIsp:
+    @datatype: float64
+    @array: "ac_jet_id.NUM_OF_JET"
+
+  ."JetIsp[*":
+    @structname: "JetIsp[*"
+
+  .JetIsp[0]:
+    @description: "Jet Specific Impulse"
+    @units: sec
+    @default: 230
+
+  .JetIsp[1]:
+    @description: "Jet Specific Impulse"
+    @units: sec
+    @default: 230
+
+  .JetIsp[2]:
+    @description: "Jet Specific Impulse"
+    @units: sec
+    @default: 230
+
+  .JetIsp[3]:
+    @description: "Jet Specific Impulse"
+    @units: sec
+    @default: 230
+
+  .JetIsp[4]:
+    @description: "Jet Specific Impulse"
+    @units: sec
+    @default: 230
+
+  .JetIsp[5]:
+    @description: "Jet Specific Impulse"
+    @units: sec
+    @default: 230
+
+  .JetIsp[6]:
+    @description: "Jet Specific Impulse"
+    @units: sec
+    @default: 230
+
+  .JetIsp[7]:
+    @description: "Jet Specific Impulse"
+    @units: sec
+    @default: 230
+
+  .JetIsp[8]:
+    @description: "Jet Specific Impulse"
+    @units: sec
+    @default: 230
+
+  .JetIsp[9]:
+    @description: "Jet Specific Impulse"
+    @units: sec
+    @default: 230
+
+  .JetIsp[10]:
+    @description: "Jet Specific Impulse"
+    @units: sec
+    @default: 230
+
+  .JetIsp[11]:
+    @description: "Jet Specific Impulse"
+    @units: sec
+    @default: 230
+
+  .JetIsp[12]:
+    @description: "Jet Specific Impulse"
+    @units: sec
+    @default: 310
+
+  .JetIsp[13]:
+    @description: "Jet Specific Impulse"
+    @units: sec
+    @default: 310
+
+  .JetNormTorq:
+    @datatype: float64
+    @array: "ac_jet_id.NUM_OF_JET,3"
+
+  ."JetNormTorq[*":
+    @structname: "JetNormTorq[*"
+
+  .JetNormTorq[0][0]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0.3924
+
+  .JetNormTorq[0][1]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0.6421
+
+  .JetNormTorq[0][2]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0
+
+  .JetNormTorq[1][0]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0
+
+  .JetNormTorq[1][1]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: -0.4965
+
+  .JetNormTorq[1][2]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: -0.4552
+
+  .JetNormTorq[2][0]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: -0.4379
+
+  .JetNormTorq[2][1]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0
+
+  .JetNormTorq[2][2]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0.6421
+
+  .JetNormTorq[3][0]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: -0.3923
+
+  .JetNormTorq[3][1]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0.628
+
+  .JetNormTorq[3][2]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0
+
+  .JetNormTorq[4][0]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0.3696
+
+  .JetNormTorq[4][1]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0
+
+  .JetNormTorq[4][2]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: -0.628
+
+  .JetNormTorq[5][0]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0
+
+  .JetNormTorq[5][1]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: -0.4281
+
+  .JetNormTorq[5][2]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0.4552
+
+  .JetNormTorq[6][0]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: -0.3978
+
+  .JetNormTorq[6][1]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: -0.628
+
+  .JetNormTorq[6][2]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0
+
+  .JetNormTorq[7][0]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0
+
+  .JetNormTorq[7][1]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0.4933
+
+  .JetNormTorq[7][2]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: -0.458
+
+  .JetNormTorq[8][0]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0.4379
+
+  .JetNormTorq[8][1]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0
+
+  .JetNormTorq[8][2]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0.628
+
+  .JetNormTorq[9][0]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0.3978
+
+  .JetNormTorq[9][1]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: -0.6421
+
+  .JetNormTorq[9][2]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0
+
+  .JetNormTorq[10][0]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: -0.3696
+
+  .JetNormTorq[10][1]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0
+
+  .JetNormTorq[10][2]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: -0.6421
+
+  .JetNormTorq[11][0]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0
+
+  .JetNormTorq[11][1]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0.4281
+
+  .JetNormTorq[11][2]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0.4606
+
+  .JetNormTorq[12][0]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: -0.0027
+
+  .JetNormTorq[12][1]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0.007
+
+  .JetNormTorq[12][2]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0
+
+  .JetNormTorq[13][0]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: -0.0027
+
+  .JetNormTorq[13][1]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0.007
+
+  .JetNormTorq[13][2]:
+    @description: "R X JetForceUnit"
+    @units: m
+    @default: 0
+
+  .JetForceUnit:
+    @datatype: float64
+    @array: "ac_jet_id.NUM_OF_JET,3"
+
+  ."JetForceUnit[*":
+    @structname: "JetForceUnit[*"
+
+  .JetForceUnit[0][0]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[0][1]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[0][2]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 1
+
+  .JetForceUnit[1][0]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 1
+
+  .JetForceUnit[1][1]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[1][2]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[2][0]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[2][1]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: -1
+
+  .JetForceUnit[2][2]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[3][0]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[3][1]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[3][2]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: -1
+
+  .JetForceUnit[4][0]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[4][1]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: -1
+
+  .JetForceUnit[4][2]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[5][0]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: -1
+
+  .JetForceUnit[5][1]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[5][2]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[6][0]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[6][1]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[6][2]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 1
+
+  .JetForceUnit[7][0]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: -1
+
+  .JetForceUnit[7][1]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[7][2]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[8][0]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[8][1]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 1
+
+  .JetForceUnit[8][2]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[9][0]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[9][1]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[9][2]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: -1
+
+  .JetForceUnit[10][0]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[10][1]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 1
+
+  .JetForceUnit[10][2]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[11][0]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 1
+
+  .JetForceUnit[11][1]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[11][2]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[12][0]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[12][1]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[12][2]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 1
+
+  .JetForceUnit[13][0]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[13][1]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 0
+
+  .JetForceUnit[13][2]:
+    @description: "Jet Force Unit Vector in the Body Frame"
+    @default: 1
+
+  .ThetaErrThrBRE:
+    @datatype: uVector
+
+  ."ThetaErrThrBRE.*":
+    @structname: "ThetaErrThrBRE.*"
+
+  .ThetaErrThrBRE.v[0]:
+    @description: "Trans From DeltaV Att Error Thr For BRE (1)"
+    @units: rad
+    @default: "0.50*DBT_DEG_2_RAD"
+
+  .ThetaErrThrBRE.v[1]:
+    @description: "Trans From DeltaV Att Error Thr For BRE (2)"
+    @units: rad
+    @default: "0.50*DBT_DEG_2_RAD"
+
+  .ThetaErrThrBRE.v[2]:
+    @description: "Trans From DeltaV Att Error Thr For BRE (3)"
+    @units: rad
+    @default: "0.50*DBT_DEG_2_RAD"
+
+  .ThetaErrThrREA:
+    @datatype: uVector
+
+  ."ThetaErrThrREA.*":
+    @structname: "ThetaErrThrREA.*"
+
+  .ThetaErrThrREA.v[0]:
+    @description: "Trans From DeltaV Att Error Thr For REA (1)"
+    @units: rad
+    @default: "0.25*DBT_DEG_2_RAD"
+
+  .ThetaErrThrREA.v[1]:
+    @description: "Trans From DeltaV Att Error Thr For REA (2)"
+    @units: rad
+    @default: "0.25*DBT_DEG_2_RAD"
+
+  .ThetaErrThrREA.v[2]:
+    @description: "Trans From DeltaV Att Error Thr For REA (3)"
+    @units: rad
+    @default: "0.25*DBT_DEG_2_RAD"
+
+  .OmegaErrThrBRE:
+    @datatype: uVector
+
+  ."OmegaErrThrBRE.*":
+    @structname: "OmegaErrThrBRE.*"
+
+  .OmegaErrThrBRE.v[0]:
+    @description: "Trans From DeltaV Rate Error Thr For BRE (1)"
+    @units: "rad/sec"
+    @default: "0.05*DBT_DEG_2_RAD"
+
+  .OmegaErrThrBRE.v[1]:
+    @description: "Trans From DeltaV Rate Error Thr For BRE (2)"
+    @units: "rad/sec"
+    @default: "0.05*DBT_DEG_2_RAD"
+
+  .OmegaErrThrBRE.v[2]:
+    @description: "Trans From DeltaV Rate Error Thr For BRE (3)"
+    @units: "rad/sec"
+    @default: "0.05*DBT_DEG_2_RAD"
+
+  .OmegaErrThrREA:
+    @datatype: uVector
+
+  ."OmegaErrThrREA.*":
+    @structname: "OmegaErrThrREA.*"
+
+  .OmegaErrThrREA.v[0]:
+    @description: "Trans From DeltaV Rate Error Thr For REA (1)"
+    @units: "rad/sec"
+    @default: "0.05*DBT_DEG_2_RAD"
+
+  .OmegaErrThrREA.v[1]:
+    @description: "Trans From DeltaV Rate Error Thr For REA (2)"
+    @units: "rad/sec"
+    @default: "0.05*DBT_DEG_2_RAD"
+
+  .OmegaErrThrREA.v[2]:
+    @description: "Trans From DeltaV Rate Error Thr For REA (3)"
+    @units: "rad/sec"
+    @default: "0.05*DBT_DEG_2_RAD"
+
+  .InitDeltaVTrqBiasScaleFactorBRE:
+    @description: "Delta V Torque Bias Scale Factor Applied During Start of BRE Delta V"
+    @datatype: float64
+    @default: 0.5
+
+  .InitDeltaVTrqBiasScaleFactorREA:
+    @description: "Delta V Torque Bias Scale Factor Applied During Start of REA Delta V"
+    @datatype: float64
+    @default: 0.2
+
+  .ResDeltaVTrqBiasScaleFactorBRE:
+    @description: "Delta V Torque Bias Scale Factor Applied During Tailoff (Residual) of BRE Delta V"
+    @datatype: float64
+    @default: 1.3
+
+  .ResDeltaVTrqBiasScaleFactorREA:
+    @description: "Delta V Torque Bias Scale Factor Applied During Tailoff (Residual) of REA Delta V"
+    @datatype: float64
+    @default: 1.5
+
+  .ResDeltaVIntErrScaleFactorBRE:
+    @description: "Integral Error Limit Bdy State Scale Factor Applied During Residual BRE Delta V"
+    @datatype: float64
+    @default: 0.6
+
+  .ResDeltaVIntErrScaleFactorREA:
+    @description: "Integral Error Limit Bdy State Scale Factor Applied During Residual REA Delta V"
+    @datatype: float64
+    @default: 1.5
+
+  .ResSimplexDeltaVIntErrGain:
+    @description: "Tuning Parameter for the Exit Transient Scaling of Simplex Delta V Burns"
+    @datatype: float64
+    @default: 1
+
+  .MinDeltaVCmdMag:
+    @description: "Minimum Magnitude Delta V That Is Commanded To The Jets"
+    @units: "m/sec"
+    @datatype: float64
+    @default: 0.001
+
+  .MinBreDeltaVOnTime:
+    @description: "Minimum Duration For A BRE Delta V"
+    @units: sec
+    @datatype: float64
+    @default: 10
+
+  .DeltaVTimerScaleFactor:
+    @description: "Scale Factor to Adjust The Simplex Timer"
+    @datatype: float64
+    @default: 2
+
+  .DeltaVTimerMinTimeEst:
+    @description: "Minimum Estimated Duration For The Simplex Timer"
+    @units: sec
+    @datatype: float64
+    @default: 72
+
+  .Simplex:
+    @datatype: ac_jet_simplex_type
+
+  ."Simplex.*":
+    @structname: "Simplex.*"
+
+  .Simplex.UpperBoundLmt:
+    @description: "Default value for UpperBounds"
+    @default: 2
+
+  ."Simplex.JetInSimplex[*]":
+    @conversion: True_False
+    
+  .Simplex.JetInSimplex[0]:
+    @description: "Flag To Include Jet In Simplex"
+    @default: True
+
+  .Simplex.JetInSimplex[1]:
+    @description: "Flag To Include Jet In Simplex"
+    @default: True
+
+  .Simplex.JetInSimplex[2]:
+    @description: "Flag To Include Jet In Simplex"
+    @default: True
+
+  .Simplex.JetInSimplex[3]:
+    @description: "Flag To Include Jet In Simplex"
+    @default: True
+
+  .Simplex.JetInSimplex[4]:
+    @description: "Flag To Include Jet In Simplex"
+    @default: True
+
+  .Simplex.JetInSimplex[5]:
+    @description: "Flag To Include Jet In Simplex"
+    @default: True
+
+  .Simplex.JetInSimplex[6]:
+    @description: "Flag To Include Jet In Simplex"
+    @default: True
+
+  .Simplex.JetInSimplex[7]:
+    @description: "Flag To Include Jet In Simplex"
+    @default: True
+
+  .Simplex.JetInSimplex[8]:
+    @description: "Flag To Include Jet In Simplex"
+    @default: True
+
+  .Simplex.JetInSimplex[9]:
+    @description: "Flag To Include Jet In Simplex"
+    @default: True
+
+  .Simplex.JetInSimplex[10]:
+    @description: "Flag To Include Jet In Simplex"
+    @default: True
+
+  .Simplex.JetInSimplex[11]:
+    @description: "Flag To Include Jet In Simplex"
+    @default: True
+
+  ."Simplex.InitialBasisVariables[*]": @conversion: ac_jet_id
+  
+  .Simplex.InitialBasisVariables[0]:
+    @default: REA1
+
+  .Simplex.InitialBasisVariables[1]:
+    @default: REA2
+
+  .Simplex.InitialBasisVariables[2]:
+    @default: REA3
+
+  .Simplex.InitialBasisVariables[3]:
+    @default: REA4
+
+  .Simplex.InitialBasisVariables[4]:
+    @default: REA8
+
+  .Simplex.InitialBasisVariables[5]:
+    @default: REA10
+
+  ."Simplex.InitialNonBasisVariables[*]": @conversion: ac_jet_id
+    
+  .Simplex.InitialNonBasisVariables[0]:
+    @default: REA5
+
+  .Simplex.InitialNonBasisVariables[1]:
+    @default: REA6
+
+  .Simplex.InitialNonBasisVariables[2]:
+    @default: REA7
+
+  .Simplex.InitialNonBasisVariables[3]:
+    @default: REA9
+
+  .Simplex.InitialNonBasisVariables[4]:
+    @default: REA11
+
+  .Simplex.InitialNonBasisVariables[5]:
+    @default: REA12
+
+  .Simplex.InitialNonBasisVariables[6]:
+    @default: BRE13
+
+  .Simplex.InitialNonBasisVariables[7]:
+    @default: BRE14
+
+  .Simplex.SimplexIterationLmt:
+    @description: "Simplex Iteration Limit"
+    @default: 100
+
+  .Simplex.SpareWord:
+    @default: 0
+}
+
+table AcLunarTable {
+  @description: "Lunar Ephemeris Parameter Table (Coefficients From 1997 Astronomical Almanac)"
+  @buildstruct!
+  @fsw.component: ACLUNARTABLE
+  @id: 20
+
+  .LML1:
+    @description: "Ecliptic Longitude Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LML2:
+    @description: "Ecliptic Longitude Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LML3:
+    @description: "Ecliptic Longitude Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LML4:
+    @description: "Ecliptic Longitude Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LML5:
+    @description: "Ecliptic Longitude Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LML6:
+    @description: "Ecliptic Longitude Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LML7:
+    @description: "Ecliptic Longitude Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LML8:
+    @description: "Ecliptic Longitude Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMLP1:
+    @description: "Ecliptic Longitude Equation Phase Constant (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMLP2:
+    @description: "Ecliptic Longitude Equation Phase Constant (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMLP3:
+    @description: "Ecliptic Longitude Equation Phase Constant (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMLP4:
+    @description: "Ecliptic Longitude Equation Phase Constant (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMLP5:
+    @description: "Ecliptic Longitude Equation Phase Constant (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMLP6:
+    @description: "Ecliptic Longitude Equation Phase Constant (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMLW1:
+    @description: "Ecliptic Longitude Equation Frequency Constant (rad/jd)"
+    @units: "rad/jd"
+    @datatype: float64
+
+  .LMLW2:
+    @description: "Ecliptic Longitude Equation Frequency Constant (rad/jd)"
+    @units: "rad/jd"
+    @datatype: float64
+
+  .LMLW3:
+    @description: "Ecliptic Longitude Equation Frequency Constant (rad/jd)"
+    @units: "rad/jd"
+    @datatype: float64
+
+  .LMLW4:
+    @description: "Ecliptic Longitude Equation Frequency Constant (rad/jd)"
+    @units: "rad/jd"
+    @datatype: float64
+
+  .LMLW5:
+    @description: "Ecliptic Longitude Equation Frequency Constant (rad/jd)"
+    @units: "rad/jd"
+    @datatype: float64
+
+  .LMLW6:
+    @description: "Ecliptic Longitude Equation Frequency Constant (rad/jd)"
+    @units: "rad/jd"
+    @datatype: float64
+
+  .LMB1:
+    @description: "Ecliptic Latitude Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMB2:
+    @description: "Ecliptic Latitude Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMB3:
+    @description: "Ecliptic Latitude Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMB4:
+    @description: "Ecliptic Latitude Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMBP1:
+    @description: "Ecliptic Latitude Equation Phase Constant (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMBP2:
+    @description: "Ecliptic Latitude Equation Phase Constant (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMBP3:
+    @description: "Ecliptic Latitude Equation Phase Constant (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMBP4:
+    @description: "Ecliptic Latitude Equation Phase Constant (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMBW1:
+    @description: "Ecliptic Latitude Equation Frequency Constant (rad/jd)"
+    @units: "rad/jd"
+    @datatype: float64
+
+  .LMBW2:
+    @description: "Ecliptic Latitude Equation Frequency Constant (rad/jd)"
+    @units: "rad/jd"
+    @datatype: float64
+
+  .LMBW3:
+    @description: "Ecliptic Latitude Equation Frequency Constant (rad/jd)"
+    @units: "rad/jd"
+    @datatype: float64
+
+  .LMBW4:
+    @description: "Ecliptic Latitude Equation Frequency Constant (rad/jd)"
+    @units: "rad/jd"
+    @datatype: float64
+
+  .LMC1:
+    @description: "Cosine Of Inclination Of Ecliptic Plane (nd)"
+    @units: ND
+    @datatype: float64
+
+  .LMC2:
+    @description: "Sine Of Inclination Of Ecliptic Plane (nd)"
+    @units: ND
+    @datatype: float64
+
+  .LMC3:
+    @description: "Sine Of Inclination Of Ecliptic Plane (nd)"
+    @units: ND
+    @datatype: float64
+
+  .LMC4:
+    @description: "Cosine Of Inclination Of Ecliptic Plane (nd)"
+    @units: ND
+    @datatype: float64
+
+  .LMP1:
+    @description: "Parallex Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMP2:
+    @description: "Parallex Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMP3:
+    @description: "Parallex Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMP4:
+    @description: "Parallex Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMP5:
+    @description: "Parallex Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMPP1:
+    @description: "Parallex Equation Phase Constant (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMPP2:
+    @description: "Parallex Equation Phase Constant (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMPP3:
+    @description: "Parallex Equation Phase Constant (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMPP4:
+    @description: "Parallex Equation Phase Constant (rad)"
+    @units: rad
+    @datatype: float64
+
+  .LMPW1:
+    @description: "Parallex Equation Frequency Constant (rad/jd)"
+    @units: "rad/jd"
+    @datatype: float64
+
+  .LMPW2:
+    @description: "Parallex Equation Frequency Constant (rad/jd)"
+    @units: "rad/jd"
+    @datatype: float64
+
+  .LMPW3:
+    @description: "Parallex Equation Frequency Constant (rad/jd)"
+    @units: "rad/jd"
+    @datatype: float64
+
+  .LMPW4:
+    @description: "Parallex Equation Frequency Constant (rad/jd)"
+    @units: "rad/jd"
+    @datatype: float64
+
+  .RE0:
+    @description: "Earth Radius (m)"
+    @units: m
+    @datatype: float64
+}
+
+table AcModeTable {
+  @buildstruct!
+  @fsw.component: ACMODETABLE
+  @id: 27
+
+  .Mode:
+    @datatype: uint8
+    @array: "DBT_NUM_AC_MODE,DBT_NUM_AC_MODE"
+
+  ."Mode[*":
+    @structname: "Mode[*"
+
+  .Mode[0][0]:
+    @default: 0
+
+  .Mode[0][1]:
+    @default: 0
+
+  .Mode[0][2]:
+    @default: 0
+
+  .Mode[0][3]:
+    @default: 0
+
+  .Mode[0][4]:
+    @default: 0
+
+  .Mode[0][5]:
+    @default: 0
+
+  .Mode[0][6]:
+    @default: 0
+
+  .Mode[0][7]:
+    @default: 0
+
+  .Mode[1][0]:
+    @default: 1
+
+  .Mode[1][1]:
+    @default: 0
+
+  .Mode[1][2]:
+    @default: 1
+
+  .Mode[1][3]:
+    @default: 1
+
+  .Mode[1][4]:
+    @default: 1
+
+  .Mode[1][5]:
+    @default: 1
+
+  .Mode[1][6]:
+    @default: 1
+
+  .Mode[1][7]:
+    @default: 1
+
+  .Mode[2][0]:
+    @default: 0
+
+  .Mode[2][1]:
+    @default: 1
+
+  .Mode[2][2]:
+    @default: 0
+
+  .Mode[2][3]:
+    @default: 1
+
+  .Mode[2][4]:
+    @default: 1
+
+  .Mode[2][5]:
+    @default: 0
+
+  .Mode[2][6]:
+    @default: 0
+
+  .Mode[2][7]:
+    @default: 0
+
+  .Mode[3][0]:
+    @default: 0
+
+  .Mode[3][1]:
+    @default: 0
+
+  .Mode[3][2]:
+    @default: 1
+
+  .Mode[3][3]:
+    @default: 0
+
+  .Mode[3][4]:
+    @default: 1
+
+  .Mode[3][5]:
+    @default: 0
+
+  .Mode[3][6]:
+    @default: 0
+
+  .Mode[3][7]:
+    @default: 0
+
+  .Mode[4][0]:
+    @default: 0
+
+  .Mode[4][1]:
+    @default: 0
+
+  .Mode[4][2]:
+    @default: 0
+
+  .Mode[4][3]:
+    @default: 1
+
+  .Mode[4][4]:
+    @default: 0
+
+  .Mode[4][5]:
+    @default: 1
+
+  .Mode[4][6]:
+    @default: 1
+
+  .Mode[4][7]:
+    @default: 1
+
+  .Mode[5][0]:
+    @default: 1
+
+  .Mode[5][1]:
+    @default: 0
+
+  .Mode[5][2]:
+    @default: 0
+
+  .Mode[5][3]:
+    @default: 1
+
+  .Mode[5][4]:
+    @default: 1
+
+  .Mode[5][5]:
+    @default: 0
+
+  .Mode[5][6]:
+    @default: 1
+
+  .Mode[5][7]:
+    @default: 1
+
+  .Mode[6][0]:
+    @default: 0
+
+  .Mode[6][1]:
+    @default: 0
+
+  .Mode[6][2]:
+    @default: 0
+
+  .Mode[6][3]:
+    @default: 1
+
+  .Mode[6][4]:
+    @default: 1
+
+  .Mode[6][5]:
+    @default: 1
+
+  .Mode[6][6]:
+    @default: 0
+
+  .Mode[6][7]:
+    @default: 1
+
+  .Mode[7][0]:
+    @default: 0
+
+  .Mode[7][1]:
+    @default: 0
+
+  .Mode[7][2]:
+    @default: 0
+
+  .Mode[7][3]:
+    @default: 1
+
+  .Mode[7][4]:
+    @default: 1
+
+  .Mode[7][5]:
+    @default: 1
+
+  .Mode[7][6]:
+    @default: 1
+
+  .Mode[7][7]:
+    @default: 0
+
+  .Att:
+    @datatype: uint8
+    @array: "8,DBT_NUM_AC_MODE"
+
+  ."Att[*":
+    @structname: "Att[*"
+}
+
+table AcRwaTable {
+  @description: "Reaction Wheel Assembly Parameter Table"
+  @buildstruct!
+  @fsw.component: ACRWATABLE
+  @id: 23
+
+  .Inertia:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."Inertia[*":
+    @structname: "Inertia[*"
+
+  .DcmRwaToBdy:
+    @datatype: float64
+    @array: "4,DBT_NUM_OF_RWA"
+
+  ."DcmRwaToBdy[*":
+    @structname: "DcmRwaToBdy[*"
+
+  .DcmRwaToBdy[0][0]:
+    @description: "RWA To Body Transformation Matrix (1,1)"
+    @units: ND
+    @default: -0.50000000000000
+
+  .DcmRwaToBdy[1][0]:
+    @description: "RWA To Body Transformation Matrix (2,1)"
+    @units: ND
+    @default: -0.70710678118655
+
+  .DcmRwaToBdy[2][0]:
+    @description: "RWA To Body Transformation Matrix (3,1)"
+    @units: ND
+    @default: -0.50000000000000
+
+  .DcmBdyToRwa:
+    @datatype: float64
+    @array: "DBT_NUM_OF_RWA,4"
+
+  ."DcmBdyToRwa[*":
+    @structname: "DcmBdyToRwa[*"
+
+  .NumOfRwaTachCycles:
+    @description: "Max Number Of RWA Tachometer Cycles, cnt"
+    @units: cnt
+    @datatype: uint16
+    @default: 24
+
+  .MaxTachCountValue:
+    @description: "14 Bit Tachometer Counter Limit, cnt"
+    @units: "cnt,0x3FFF"
+    @datatype: uint16
+    @default: 16383
+
+  .DeltaTachCountThr:
+    @description: "Delta Tachometer Count Threshold, cnt"
+    @units: cnt
+    @datatype: uint16
+    @default: 1
+
+  .Pad:
+    @datatype: uint16
+
+  .Pulse2Angle:
+    @description: "Tachometer Pulses Per Revolution, rad/pulse"
+    @units: "rad/pulse"
+    @datatype: float64
+    @default: "DBT_TWOPI / 18.0"
+
+  .Torque2VoltSF:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."Torque2VoltSF[*":
+    @structname: "Torque2VoltSF[*"
+
+  .Torque2VoltBias:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."Torque2VoltBias[*":
+    @structname: "Torque2VoltBias[*"
+
+  .CmdVolt2CntBias:
+    @description: "RW Count Bias For Volt To Count Conversion, cnt"
+    @units: cnt
+    @datatype: float64
+    @default: 2048
+
+  .CmdVolt2CntSF:
+    @description: "RW Volts To Counts Scale Factor, cnt/V"
+    @units: "cnt/V"
+    @datatype: float64
+    @default: 204.8
+
+  .TorqueSlewLmt:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."TorqueSlewLmt[*":
+    @structname: "TorqueSlewLmt[*"
+
+  .TorqueCmdMaxLmt:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."TorqueCmdMaxLmt[*":
+    @structname: "TorqueCmdMaxLmt[*"
+
+  .TorqueScNullCtlMaxLmt:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."TorqueScNullCtlMaxLmt[*":
+    @structname: "TorqueScNullCtlMaxLmt[*"
+
+  .DefaultSpeedCmd:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."DefaultSpeedCmd[*":
+    @structname: "DefaultSpeedCmd[*"
+
+  .SpeedCmdMax:
+    @description: "RWA Max Commanded Speed, rad/sec"
+    @units: "rad/sec"
+    @datatype: float64
+    @default: 628.3185307179587
+
+  .ViscousFrcSF:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."ViscousFrcSF[*":
+    @structname: "ViscousFrcSF[*"
+
+  .Kest:
+    @datatype: float64
+    @array: 2
+
+  ."Kest[*":
+    @structname: "Kest[*"
+
+  .Kest[0]:
+    @description: "RWA Estimator Gains (1)"
+    @units: "1/sec"
+    @default: 3.60E-01
+
+  .Kest[1]:
+    @description: "RWA Estimator Gains (2)"
+    @units: "1/sec"
+    @default: 2.60E-04
+
+  .Kcnt:
+    @datatype: float64
+    @array: 2
+
+  ."Kcnt[*":
+    @structname: "Kcnt[*"
+
+  .Kcnt[0]:
+    @description: "RWA Speed Control Gains (1)"
+    @units: "1/sec"
+    @default: 1.60E-02
+
+  .Kcnt[1]:
+    @description: "RWA Speed Control Gains (2)"
+    @units: "1/sec"
+    @default: 1.00
+
+  .TorqueStictionMax:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."TorqueStictionMax[*":
+    @structname: "TorqueStictionMax[*"
+
+  .Fdc:
+    @datatype: ac_rwa_table_fdc_type
+
+  ."Fdc.*":
+    @structname: "Fdc.*"
+
+  .Fdc.RwaCorrectCnt:
+    @default: 240
+
+  .Fdc.RwaVerifyCnt:
+    @default: 480
+}
+
+table AcSadTable {
+  @buildstruct!
+  @fsw.component: ACSADTABLE
+  @id: 26
+
+  .AtoDGainFactor:
+    @datatype: float64
+
+  .ScaleFactor:
+    @datatype: float64
+
+  .StepDeadband:
+    @description: "Max error before commanding step"
+    @datatype: float64
+
+  .SlewRateHiThr:
+    @description: "Error high threshold for transition between normal & slew rate"
+    @datatype: float64
+
+  .SlewRateLoThr:
+    @description: "Error low threshold for transition between normal & slew rate "
+    @datatype: float64
+
+  .GroundRef:
+    @datatype: float64
+    @array: DBT_NUM_OF_SAD
+
+  ."GroundRef[*":
+    @structname: "GroundRef[*"
+
+  .RefVolt:
+    @datatype: float64
+    @array: "DBT_NUM_OF_SAD,DBT_NUM_OF_POT"
+
+  ."RefVolt[*":
+    @structname: "RefVolt[*"
+
+  .AngleRange:
+    @datatype: float64
+    @array: "DBT_NUM_OF_SAD,DBT_NUM_OF_POT"
+
+  ."AngleRange[*":
+    @structname: "AngleRange[*"
+
+  .AnglePotMax:
+    @description: "Maximum magnitude of potentiometer measurement, rad  "
+    @datatype: float64
+
+  .AnglePotRes:
+    @description: "Resolution of potentiometer measurement, rad  "
+    @datatype: float64
+
+  .Kstep:
+    @description: "Angle change per SAD step, rad/step "
+    @datatype: float64
+
+  .AngleRef:
+    @datatype: float64
+    @array: "DBT_NUM_OF_SAD,DBT_NUM_OF_POT"
+
+  ."AngleRef[*":
+    @structname: "AngleRef[*"
+
+  .Mest:
+    @description: "SAD estimator gain attenuation factor"
+    @datatype: float64
+
+  .Best:
+    @description: "SAD estimator gain offset factor"
+    @datatype: float64
+
+  .MaxStepsNormal:
+    @description: "Maximum number of steps per control cycle, Normal rate, steps"
+    @datatype: uint16
+
+  .MinStepsNormal:
+    @description: "Minimum number of steps per control cycle, Normal rate, steps"
+    @datatype: uint16
+
+  .MaxStepsSlew:
+    @description: "Maximum number of steps per control cycle, Slew rate, steps"
+    @datatype: uint16
+
+  .MinStepsSlew:
+    @description: "Minimum number of steps per control cycle, Slew rate, steps"
+    @datatype: uint16
+
+  .CycleMask:
+    @description: "Cycle mask for SAD processing"
+    @datatype: uint16
+
+  .FrameMask:
+    @description: "Frame mask for SAD processing"
+    @datatype: uint16
+
+  .Fdc:
+    @datatype: ac_sad_table_fdc_type
+
+  ."Fdc.*":
+    @structname: "Fdc.*"
+}
+
+table AcScEphTable {
+  @description: "Spacecraft Ephemeris Parameter Table"
+  @buildstruct!
+  @fsw.component: ACSCEPHTABLE
+  @id: 18
+
+  .ScEphDtThr:
+    @description: "ScEphDtThr For Propagating Eph, sec"
+    @units: sec
+    @datatype: float64
+
+  .ScEphTimeWarnHiThr:
+    @description: "ScEphTimeWarnHiThr For Eph UpdateTime Check"
+    @units: sec
+    @datatype: float64
+
+  .RscMagThr:
+    @description: RscMagThr
+    @units: m
+    @datatype: float64
+
+  .PositionLmt:
+    @description: "PositionLmt For Accepting New EPV"
+    @units: m
+    @datatype: float64
+
+  .VelocityLmt:
+    @description: "VelocityLmt For Accepting New EPV"
+    @units: m.s
+    @datatype: float64
+
+  .SunMu:
+    @description: SunMu
+    @units: "m^3/s^2"
+    @datatype: float64
+
+  .MoonMu:
+    @description: MoonMu
+    @units: "m^3/s^2"
+    @datatype: float64
+
+  .ScWetMass:
+    @description: "Spacecraft Wet Mass"
+    @units: kg
+    @datatype: float64
+
+  .ScDryMass:
+    @description: "Spacecraft Dry Mass"
+    @units: kg
+    @datatype: float64
+
+  .EarthRadius:
+    @description: "EarthRadius At Equator"
+    @units: m
+    @datatype: float64
+
+  .EarthMu:
+    @description: EarthMu
+    @units: "m^3/s^2"
+    @datatype: float64
+
+  .J2:
+    @description: "J2 Zonal Harmonic"
+    @datatype: float64
+
+  .J3:
+    @description: "J3 Zonal Harmonic"
+    @datatype: float64
+
+  .J4:
+    @description: "J4 Zonal Harmonic"
+    @datatype: float64
+
+  .CS22:
+    @description: "CS22 Sectoral Harmonic, sqrt(C22^2 + S22^2)"
+    @datatype: float64
+
+  .ANG22:
+    @description: "Result Of atan2(S22, C22)"
+    @units: rad
+    @datatype: float64
+
+  .DvEstAutoSelAccelThr:
+    @description: "DeltaV Estimate Auto Seclect Acceleration Threshold"
+    @units: "m/s^2"
+    @datatype: float64
+
+  .Goods:
+    @datatype: ac_sc_eph_table_goods_type
+
+  ."Goods.*":
+    @structname: "Goods.*"
+
+  .SpareWord:
+    @datatype: uint16
+}
+
+table AcSolarTable {
+  @description: "Solar Ephemeris Parameter Table (Coefficients From 1997 Astronomical Almanac)"
+  @buildstruct!
+  @fsw.component: ACSOLARTABLE
+  @id: 19
+
+  .SMSE0:
+    @description: "Inclination Of Ecliptic Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .SMSE1:
+    @description: "Inclination Of Ecliptic Equation Frequency Constant (rad/day)"
+    @units: "rad/day"
+    @datatype: float64
+
+  .SMMA1:
+    @description: "Mean Anomaly Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .SMMA2:
+    @description: "Mean Anomaly Equation Frequency Constant (rad/day)"
+    @units: "rad/day"
+    @datatype: float64
+
+  .SMML1:
+    @description: "Mean Longitude Equation Coefficient (rad)"
+    @units: "rad,280.47169"
+    @datatype: float64
+
+  .SMML2:
+    @description: "Mean Longitude Equation Frequency Coefficient (rad/day)"
+    @units: "rad/day"
+    @datatype: float64
+
+  .SMEL1:
+    @description: "Mean Longitude Correction Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .SMEL2:
+    @description: "Mean Longitude Correction Equation Coefficient (rad)"
+    @units: rad
+    @datatype: float64
+
+  .SMGPL:
+    @description: "General Precession In Longitude At J2000.0 (rad/day)"
+    @units: "rad/day"
+    @datatype: float64
+
+  .SMR1:
+    @description: "Distance From Earth To Sun Coefficient (a.u.)"
+    @units: au
+    @datatype: float64
+
+  .SMR2:
+    @description: "Distance From Earth To Sun Coefficient (a.u.)"
+    @units: au
+    @datatype: float64
+
+  .SMR3:
+    @description: "Distance From Earth To Sun Coefficient (a.u.)"
+    @units: m
+    @datatype: float64
+
+  .RS0:
+    @description: "Nominal Earth To Sun Distance (m)"
+    @units: cnt
+    @datatype: float64
+
+  .ComputeVelocityCnt:
+    @description: "Sun Velocity Computation Period"
+    @units: cnt
+    @datatype: sint32
+
+  .SpareDword:
+    @description: Spare
+    @datatype: sint32
+}
+
+table AcStaTable {
+  @buildstruct!
+  @fsw.component: ACSTATABLE
+  @id: 25
+
+  .StaMesDelay:
+    @datatype: float64
+    @array: DBT_NUM_OF_STA
+
+  ."StaMesDelay[*":
+    @structname: "StaMesDelay[*"
+
+  .IruToAcDelay:
+    @datatype: float64
+    @array: DBT_NUM_OF_STA
+
+  ."IruToAcDelay[*":
+    @structname: "IruToAcDelay[*"
+
+  .WarmUpTime:
+    @datatype: float64
+    @array: DBT_NUM_OF_STA
+
+  ."WarmUpTime[*":
+    @structname: "WarmUpTime[*"
+
+  .CoiScaleFactor:
+    @datatype: float64
+
+  .LinearVelocityLsbX:
+    @datatype: float64
+
+  .LinearVelocityLsbY:
+    @datatype: float64
+
+  .LinearVelocityLsbZ:
+    @datatype: float64
+
+  .XYQualityIndexLsb:
+    @datatype: float64
+
+  .ZQualityIndexLsb:
+    @datatype: float64
+
+  .QBdyToSta:
+    @datatype: uQuaternion
+    @array: DBT_NUM_OF_STA
+
+  ."QBdyToSta[*":
+    @structname: "QBdyToSta[*"
+
+  .StaNoiseCov:
+    @datatype: uMatrix
+    @array: DBT_NUM_OF_STA
+
+  ."StaNoiseCov[*":
+    @structname: "StaNoiseCov[*"
+
+  .BoresightSta:
+    @datatype: uVector
+    @array: DBT_NUM_OF_STA
+
+  ."BoresightSta[*":
+    @structname: "BoresightSta[*"
+
+  .QmagThr:
+    @description: "Quaternion Magnitude Threshhold, for FDC"
+    @datatype: float64
+
+  .TempScaleCoef:
+    @datatype: float64
+    @array: 7
+
+  ."TempScaleCoef[*":
+    @structname: "TempScaleCoef[*"
+
+  .XYQualityIndexThr:
+    @datatype: sint16
+    @array: DBT_NUM_OF_STA
+
+  ."XYQualityIndexThr[*":
+    @structname: "XYQualityIndexThr[*"
+
+  .ZQualityIndexThr:
+    @datatype: sint16
+    @array: DBT_NUM_OF_STA
+
+  ."ZQualityIndexThr[*":
+    @structname: "ZQualityIndexThr[*"
+
+  .VelCmdModeMin:
+    @datatype: uint16
+
+  .VelCmdModeMax:
+    @datatype: uint16
+
+  .SecondStatusMask:
+    @datatype: uint32
+    @array: DBT_NUM_OF_STA
+
+  ."SecondStatusMask[*":
+    @structname: "SecondStatusMask[*"
+
+  .SecondStatusDesired:
+    @datatype: uint32
+    @array: DBT_NUM_OF_STA
+
+  ."SecondStatusDesired[*":
+    @structname: "SecondStatusDesired[*"
+
+  .SyntDefPaMask:
+    @datatype: uint16
+    @array: DBT_NUM_OF_STA
+
+  ."SyntDefPaMask[*":
+    @structname: "SyntDefPaMask[*"
+
+  .SyntDefPaDesired:
+    @datatype: uint16
+    @array: DBT_NUM_OF_STA
+
+  ."SyntDefPaDesired[*":
+    @structname: "SyntDefPaDesired[*"
+
+  .Fdc:
+    @datatype: ac_sta_table_fdc_type
+
+  ."Fdc.*":
+    @structname: "Fdc.*"
+
+  .CycleMask:
+    @description: "Cycle Mask For STA Processing "
+    @datatype: uint16
+
+  .FrameMask:
+    @description: "Frame Mask For STA Processing "
+    @datatype: uint16
+
+  .VelCmdCycleMask:
+    @datatype: uint16
+    @array: DBT_NUM_OF_STA
+
+  ."VelCmdCycleMask[*":
+    @structname: "VelCmdCycleMask[*"
+
+  .VelCmdFrameMask:
+    @datatype: uint16
+    @array: DBT_NUM_OF_STA
+
+  ."VelCmdFrameMask[*":
+    @structname: "VelCmdFrameMask[*"
+}
+
+table AcTable {
+  @description: "AC Parameter Table"
+  @buildstruct!
+  @fsw.component: ACTABLE
+  @id: 14
+
+  .CycleMax:
+    @description: "Maximum 0.1 Sec Cycles (From 1 - 10)"
+    @units: "cycles,(From_1-10)"
+    @datatype: uint16
+    @default: DBT_NUM_AC_CYCLES
+
+  .FrameMax:
+    @description: "Maximum +1.0 Sec Frames (From 1 - 15)"
+    @units: "frames,(From_1-15)"
+    @datatype: uint16
+    @default: 15
+
+  .SolarCycleMask:
+    @description: "Sun Ephemeris Cycle Mask"
+    @units: "mask,Cycle,1"
+    @datatype: uint16
+    @default: 0x0002
+
+  .SolarFrameMask:
+    @description: "Sun Ephemeris Frame Mask"
+    @units: "mask,Every_Frame,(1Hz)"
+    @datatype: uint16
+    @default: 0xFFFE
+
+  .LunarCycleMask:
+    @description: "Moon Ephemeris Cycle Mask"
+    @units: "mask,Cycle,1"
+    @datatype: uint16
+    @default: 0x0002
+
+  .LunarFrameMask:
+    @description: "Moon Ephemeris Frame Mask"
+    @units: "mask,Every_Frame,(1Hz)"
+    @datatype: uint16
+    @default: 0xFFFE
+
+  .KFCycleMask:
+    @description: "Kalman Filter Cycle Mask"
+    @units: "mask,Cycle,1"
+    @datatype: uint16
+    @default: 0x0002
+
+  .KFFrameMask:
+    @description: "Kalman Filter Frame Mask"
+    @units: "mask,Every_Frame,(1Hz)"
+    @datatype: uint16
+    @default: 0xFFFE
+
+  .AnCmdCycleMask:
+    @description: "AN Command Cycle Mask"
+    @units: "mask,Cycle,1"
+    @datatype: uint16
+    @default: 0x0002
+
+  .AnCmdFrameMask:
+    @description: "AN Command Frame Mask"
+    @units: "mask,Every_Frame,(1Hz)"
+    @datatype: uint16
+    @default: 0xFFFE
+
+  .ElapsedTimeDtThr:
+    @description: "Mission Elapsed Delta Time Threshold"
+    @units: sec
+    @datatype: float64
+    @default: 0.0
+
+  .EpochBias:
+    @description: "Bias From J2000.0 Epoch"
+    @units: days
+    @datatype: float64
+    @default: 0.0
+
+  .GHA_J2000:
+    @description: "Greenwich Hour Angle At J2000.0"
+    @units: rad
+    @datatype: float64
+    @default: 4.89590917379201
+
+  .EARTH_RATE:
+    @description: "Earth Rate"
+    @units: "rad/sec"
+    @datatype: float64
+    @default: 7.2921151467E-05
+
+  .RateNull:
+    @datatype: ac_ratenull_type
+
+  ."RateNull.*":
+    @structname: "RateNull.*"
+
+  .RateNull.OmegaCmd.v[0]:
+    @default: "0.0 * DBT_DEG_2_RAD"
+
+  .RateNull.OmegaCmd.v[1]:
+    @default: "0.0 * DBT_DEG_2_RAD"
+
+  .RateNull.OmegaCmd.v[2]:
+    @default: "0.0 * DBT_DEG_2_RAD"
+
+  .SunAcq:
+    @datatype: ac_sunacq_type
+
+  ."SunAcq.*":
+    @structname: "SunAcq.*"
+
+  .SunPnt:
+    @datatype: ac_sunpnt_type
+
+  ."SunPnt.*":
+    @structname: "SunPnt.*"
+
+  .Fdc:
+    @datatype: ac_table_fdc_type
+
+  ."Fdc.*":
+    @structname: "Fdc.*"
+}
+
+table AcTgtPntTable {
+  @description: "Target Pointing Parameter Table"
+  @buildstruct!
+  @fsw.component: ACTGTPNTTABLE
+  @id: 16
+
+  .NullOmegaPhaseCnt:
+    @description: "Rate Null Phase Count, cnt"
+    @units: cnt
+    @datatype: uint16
+
+  .OmegaSettlingCnt:
+    @description: "Rate Settling Count, cnt"
+    @units: cnt
+    @datatype: uint16
+
+  .OmegaEstMagSqrLmt:
+    @description: "Rate Estimate Magnitude Squared Limit, rad/sec"
+    @units: "rad/sec"
+    @datatype: float64
+
+  .CaptureAngle:
+    @description: "Capture Angle, rad"
+    @units: "rad/sec"
+    @datatype: float64
+
+  .OmegaBdyWrtRefMagInc:
+    @description: "Body Rate Magnitude Increment, cnt"
+    @units: cnt
+    @datatype: float64
+
+  .DeltaQ:
+    @datatype: uQuaternion
+
+  ."DeltaQ.*":
+    @structname: "DeltaQ.*"
+
+  .SadAxisBdy:
+    @datatype: uVector
+
+  ."SadAxisBdy.*":
+    @structname: "SadAxisBdy.*"
+
+  .TwoAxisSteeringDeadband:
+    @description: "Deadband For Two-Axis Steering, rad"
+    @units: "rad/sec"
+    @datatype: float64
+
+  .EnableResetStopSlewAtt:
+    @description: "Reset The Commanded Attitude After Nulling Rates Following A Stop Slew Command, ND"
+    @units: ND
+    @datatype: uint16
+
+  .SpareWord:
+    @description: "Pad Structure"
+    @datatype: uint16
+}
+
+table AdTable {
+  @description: "Spacecraft Attitude Determination Parameter Table"
+  @buildstruct!
+  @fsw.component: ADTABLE
+  @id: 17
+
+  .PInitial:
+    @datatype: float64
+    @array: "2,6"
+
+  ."PInitial[*":
+    @structname: "PInitial[*"
+
+  .PInitial[0][0]:
+    @description: "KF Initial P Matrix, Gyroed"
+    @units: "rad^2"
+    @default: "degrees(1.0)**2"
+
+  .PInitial[0][1]:
+    @description: "KF Initial P Matrix, Gyroed"
+    @units: "rad^2"
+    @default: "degrees(1.0)**2"
+
+  .PInitial[0][2]:
+    @description: "KF Initial P Matrix, Gyroed"
+    @units: "rad^2"
+    @default: "degrees(1.0)**2"
+
+  .PInitial[0][3]:
+    @description: "KF Initial P Matrix, Gyroed"
+    @units: "(rad/sec)^2"
+    @default: "degrees(1.0/3600.)**2"
+
+  .PInitial[0][4]:
+    @description: "KF Initial P Matrix, Gyroed"
+    @units: "(rad/sec)^2"
+    @default: "degrees(1.0/3600.)**2"
+
+  .PInitial[0][5]:
+    @description: "KF Initial P Matrix, Gyroed"
+    @units: "(rad/sec)^2"
+    @default: "degrees(1.0/3600.)**2"
+
+  .PInitial[1][0]:
+    @description: "KF Initial P Matrix, Gyroless"
+    @units: "rad^2"
+    @default: "degrees(1.0)**2"
+
+  .PInitial[1][1]:
+    @description: "KF Initial P Matrix, Gyroless"
+    @units: "rad^2"
+    @default: "degrees(1.0)**2"
+
+  .PInitial[1][2]:
+    @description: "KF Initial P Matrix, Gyroless"
+    @units: "rad^2"
+    @default: "degrees(1.0)**2"
+
+  .PInitial[1][3]:
+    @description: "KF Initial P Matrix, Gyroless"
+    @units: "(rad/sec)^2"
+    @default: "degrees(1.0/3600.)**2"
+
+  .PInitial[1][4]:
+    @description: "KF Initial P Matrix, Gyroless"
+    @units: "(rad/sec)^2"
+    @default: "degrees(1.0/3600.)**2"
+
+  .PInitial[1][5]:
+    @description: "KF Initial P Matrix, Gyroless"
+    @units: "(rad/sec)^2"
+    @default: "degrees(1.0/3600.)**2"
+
+  .PDivergenceThr:
+    @datatype: float64
+    @array: "2,6"
+
+  ."PDivergenceThr[*":
+    @structname: "PDivergenceThr[*"
+
+  .PDivergenceThr[0][0]:
+    @description: "KF P Divergence Threshold, Gyroed"
+    @units: "rad^2"
+    @default: "degrees(3.5)**2"
+
+  .PDivergenceThr[0][1]:
+    @description: "KF P Divergence Threshold, Gyroed"
+    @units: "rad^2"
+    @default: "degrees(3.5)**2"
+
+  .PDivergenceThr[0][2]:
+    @description: "KF P Divergence Threshold, Gyroed"
+    @units: "rad^2"
+    @default: "degrees(3.5)**2"
+
+  .PDivergenceThr[0][3]:
+    @description: "KF P Divergence Threshold, Gyroed"
+    @units: "(rad/sec)^2"
+    @default: "degrees(15.0/3600.)**2"
+
+  .PDivergenceThr[0][4]:
+    @description: "KF P Divergence Threshold, Gyroed"
+    @units: "(rad/sec)^2"
+    @default: "degrees(15.0/3600.)**2"
+
+  .PDivergenceThr[0][5]:
+    @description: "KF P Divergence Threshold, Gyroed"
+    @units: "(rad/sec)^2"
+    @default: "degrees(15.0/3600.)**2"
+
+  .PDivergenceThr[1][0]:
+    @description: "KF P Divergence Threshold, Gyroless"
+    @units: "rad^2"
+    @default: "degrees(5.0)**2"
+
+  .PDivergenceThr[1][1]:
+    @description: "KF P Divergence Threshold, Gyroless"
+    @units: "rad^2"
+    @default: "degrees(5.0)**2"
+
+  .PDivergenceThr[1][2]:
+    @description: "KF P Divergence Threshold, Gyroless"
+    @units: "rad^2"
+    @default: "degrees(5.0)**2"
+
+  .PDivergenceThr[1][3]:
+    @description: "KF P Divergence Threshold, Gyroless"
+    @units: "(rad/sec)^2"
+    @default: "degrees(100.0/3600.)**2"
+
+  .PDivergenceThr[1][4]:
+    @description: "KF P Divergence Threshold, Gyroless"
+    @units: "(rad/sec)^2"
+    @default: "degrees(100.0/3600.)**2"
+
+  .PDivergenceThr[1][5]:
+    @description: "KF P Divergence Threshold, Gyroless"
+    @units: "(rad/sec)^2"
+    @default: "degrees(100.0/3600.)**2"
+
+  .PCoarseConvergenceThr:
+    @datatype: float64
+    @array: "2,6"
+
+  ."PCoarseConvergenceThr[*":
+    @structname: "PCoarseConvergenceThr[*"
+
+  .PCoarseConvergenceThr[0][0]:
+    @description: "KF P Coarse Convergence Threshold, Gyroed"
+    @units: "rad^2"
+    @default: "degrees(25.0/3600.)**2"
+
+  .PCoarseConvergenceThr[0][1]:
+    @description: "KF P Coarse Convergence Threshold, Gyroed"
+    @units: "rad^2"
+    @default: "degrees(25.0/3600.)**2"
+
+  .PCoarseConvergenceThr[0][2]:
+    @description: "KF P Coarse Convergence Threshold, Gyroed"
+    @units: "rad^2"
+    @default: "degrees(25.0/3600.)**2"
+
+  .PCoarseConvergenceThr[0][3]:
+    @description: "KF P Coarse Convergence Threshold, Gyroed"
+    @units: "(rad/sec)^2"
+    @default: "degrees(0.7/3600.)**2"
+
+  .PCoarseConvergenceThr[0][4]:
+    @description: "KF P Coarse Convergence Threshold, Gyroed"
+    @units: "(rad/sec)^2"
+    @default: "degrees(0.7/3600.)**2"
+
+  .PCoarseConvergenceThr[0][5]:
+    @description: "KF P Coarse Convergence Threshold, Gyroed"
+    @units: "(rad/sec)^2"
+    @default: "degrees(0.7/3600.)**2"
+
+  .PCoarseConvergenceThr[1][0]:
+    @description: "KF P Coarse Convergence Threshold, Gyroless"
+    @units: "rad^2"
+    @default: "degrees(50.0/3600.)**2"
+
+  .PCoarseConvergenceThr[1][1]:
+    @description: "KF P Coarse Convergence Threshold, Gyroless"
+    @units: "rad^2"
+    @default: "degrees(50.0/3600.)**2"
+
+  .PCoarseConvergenceThr[1][2]:
+    @description: "KF P Coarse Convergence Threshold, Gyroless"
+    @units: "rad^2"
+    @default: "degrees(50.0/3600.)**2"
+
+  .PCoarseConvergenceThr[1][3]:
+    @description: "KF P Coarse Convergence Threshold, Gyroless"
+    @units: "(rad/sec)^2"
+    @default: "degrees(10.0/3600.)**2"
+
+  .PCoarseConvergenceThr[1][4]:
+    @description: "KF P Coarse Convergence Threshold, Gyroless"
+    @units: "(rad/sec)^2"
+    @default: "degrees(10.0/3600.)**2"
+
+  .PCoarseConvergenceThr[1][5]:
+    @description: "KF P Coarse Convergence Threshold, Gyroless"
+    @units: "(rad/sec)^2"
+    @default: "degrees(10.0/3600.)**2"
+
+  .PFineConvergenceThr:
+    @datatype: float64
+    @array: "2,6"
+
+  ."PFineConvergenceThr[*":
+    @structname: "PFineConvergenceThr[*"
+
+  .PFineConvergenceThr[0][0]:
+    @description: "KF P Fine Convergence Threshold, Gyroed"
+    @units: "rad^2"
+    @default: "degrees(25.0/3600.)**2"
+
+  .PFineConvergenceThr[0][1]:
+    @description: "KF P Fine Convergence Threshold, Gyroed"
+    @units: "rad^2"
+    @default: "degrees(6.0/3600.)**2"
+
+  .PFineConvergenceThr[0][2]:
+    @description: "KF P Fine Convergence Threshold, Gyroed"
+    @units: "rad^2"
+    @default: "degrees(10.0/3600.)**2"
+
+  .PFineConvergenceThr[0][3]:
+    @description: "KF P Fine Convergence Threshold, Gyroed"
+    @units: "(rad/sec)^2"
+    @default: "degrees(0.2/3600.)**2"
+
+  .PFineConvergenceThr[0][4]:
+    @description: "KF P Fine Convergence Threshold, Gyroed"
+    @units: "(rad/sec)^2"
+    @default: "degrees(0.2/3600.)**2"
+
+  .PFineConvergenceThr[0][5]:
+    @description: "KF P Fine Convergence Threshold, Gyroed"
+    @units: "(rad/sec)^2"
+    @default: "degrees(0.2/3600.)**2"
+
+  .PFineConvergenceThr[1][0]:
+    @description: "KF P Fine Convergence Threshold, Gyroless"
+    @units: "rad^2"
+    @default: "degrees(25.0/3600.)**2"
+
+  .PFineConvergenceThr[1][1]:
+    @description: "KF P Fine Convergence Threshold, Gyroless"
+    @units: "rad^2"
+    @default: "degrees(25.0/3600.)**2"
+
+  .PFineConvergenceThr[1][2]:
+    @description: "KF P Fine Convergence Threshold, Gyroless"
+    @units: "rad^2"
+    @default: "degrees(25.0/3600.)**2"
+
+  .PFineConvergenceThr[1][3]:
+    @description: "KF P Fine Convergence Threshold, Gyroless"
+    @units: "(rad/sec)^2"
+    @default: "degrees(5.0/3600.)**2"
+
+  .PFineConvergenceThr[1][4]:
+    @description: "KF P Fine Convergence Threshold, Gyroless"
+    @units: "(rad/sec)^2"
+    @default: "degrees(5.0/3600.)**2"
+
+  .PFineConvergenceThr[1][5]:
+    @description: "KF P Fine Convergence Threshold, Gyroless"
+    @units: "(rad/sec)^2"
+    @default: "degrees(5.0/3600.)**2"
+
+  .k:
+    @datatype: float64
+    @array: 3
+
+  ."k[*":
+    @structname: "k[*"
+
+  .k[0]:
+    @description: "Body Frame Residual Validation Parameters"
+    @units: ND
+    @default: 36
+
+  .k[1]:
+    @description: "Body Frame Residual Validation Parameters"
+    @units: ND
+    @default: 36
+
+  .k[2]:
+    @description: "Body Frame Residual Validation Parameters"
+    @units: ND
+    @default: 36
+
+  .ResEditAngleThr:
+    @datatype: float64
+    @array: 3
+
+  ."ResEditAngleThr[*":
+    @structname: "ResEditAngleThr[*"
+
+  .ResEditAngleThr[0]:
+    @description: "X-axis Body Frame Residual Edit Angle Threshold"
+    @units: rad
+    @default: "degrees(180.0/3600.)"
+
+  .ResEditAngleThr[1]:
+    @description: "Y-axis Body Frame Residual Edit Angle Threshold"
+    @units: rad
+    @default: "degrees(180.0/3600.)"
+
+  .ResEditAngleThr[2]:
+    @description: "Z-axis Body Frame Residual Edit Angle Threshold"
+    @units: rad
+    @default: "degrees(360.0/3600.)"
+
+  .NoIruQ:
+    @datatype: float64
+    @array: "2,6,6"
+
+  ."NoIruQ[*":
+    @structname: "NoIruQ[*"
+
+  .NoIruQ[0][0][0]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 3.30E-09
+
+  .NoIruQ[0][0][1]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][0][2]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][0][3]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: -3.00E-12
+
+  .NoIruQ[0][0][4]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][0][5]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][1][0]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][1][1]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 3.30E-09
+
+  .NoIruQ[0][1][2]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][1][3]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][1][4]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: -3.00E-12
+
+  .NoIruQ[0][1][5]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][2][0]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][2][1]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][2][2]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 3.30E-09
+
+  .NoIruQ[0][2][3]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][2][4]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][2][5]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: -3.00E-12
+
+  .NoIruQ[0][3][0]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: -3.00E-12
+
+  .NoIruQ[0][3][1]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][3][2]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][3][3]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 6.00E-12
+
+  .NoIruQ[0][3][4]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][3][5]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][4][0]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][4][1]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: -3.00E-12
+
+  .NoIruQ[0][4][2]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][4][3]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][4][4]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 6.00E-12
+
+  .NoIruQ[0][4][5]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][5][0]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][5][1]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][5][2]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: -3.00E-12
+
+  .NoIruQ[0][5][3]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][5][4]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 0
+
+  .NoIruQ[0][5][5]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_JET"
+    @default: 6.00E-12
+
+  .NoIruQ[1][0][0]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 3.30E-09
+
+  .NoIruQ[1][0][1]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][0][2]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][0][3]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: -3.00E-12
+
+  .NoIruQ[1][0][4]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][0][5]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][1][0]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][1][1]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 3.30E-09
+
+  .NoIruQ[1][1][2]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][1][3]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][1][4]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: -3.00E-12
+
+  .NoIruQ[1][1][5]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][2][0]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][2][1]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][2][2]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 3.30E-09
+
+  .NoIruQ[1][2][3]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][2][4]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][2][5]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: -3.00E-12
+
+  .NoIruQ[1][3][0]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: -3.00E-12
+
+  .NoIruQ[1][3][1]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][3][2]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][3][3]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 6.00E-12
+
+  .NoIruQ[1][3][4]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][3][5]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][4][0]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][4][1]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: -3.00E-12
+
+  .NoIruQ[1][4][2]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][4][3]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][4][4]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 6.00E-12
+
+  .NoIruQ[1][4][5]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][5][0]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][5][1]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][5][2]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: -3.00E-12
+
+  .NoIruQ[1][5][3]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][5][4]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 0
+
+  .NoIruQ[1][5][5]:
+    @description: "State Noise Covariance Matrix, Q, Without An IRU, SELECT_RWA"
+    @default: 6.00E-12
+
+  .Kd:
+    @datatype: float64
+    @array: "2,3"
+
+  ."Kd[*":
+    @structname: "Kd[*"
+
+  .Kd[0][0]:
+    @description: "Disturbance Acceleration Estimation Gains"
+    @units: "1/s^2"
+    @default: 1.00E-04
+
+  .Kd[0][1]:
+    @description: "Disturbance Acceleration Estimation Gains"
+    @units: "1/s^2"
+    @default: 1.00E-04
+
+  .Kd[0][2]:
+    @description: "Disturbance Acceleration Estimation Gains"
+    @units: "1/s^2"
+    @default: 1.00E-04
+
+  .Kd[1][0]:
+    @description: "Disturbance Acceleration Estimation Gains"
+    @units: "1/s^2"
+    @default: 1.00E-06
+
+  .Kd[1][1]:
+    @description: "Disturbance Acceleration Estimation Gains"
+    @units: "1/s^2"
+    @default: 1.00E-06
+
+  .Kd[1][2]:
+    @description: "Disturbance Acceleration Estimation Gains"
+    @units: "1/s^2"
+    @default: 1.00E-06
+
+  .AlphaDstEstBdyLmt:
+    @datatype: uVector
+
+  ."AlphaDstEstBdyLmt.*":
+    @structname: "AlphaDstEstBdyLmt.*"
+
+  .AlphaDstEstBdyLmt.v[0]:
+    @description: AlphaDstEstBdyLmt
+    @units: "rad/sec^2"
+    @default: 5.00E-03
+
+  .AlphaDstEstBdyLmt.v[1]:
+    @description: AlphaDstEstBdyLmt
+    @units: "rad/sec^2"
+    @default: 5.00E-03
+
+  .AlphaDstEstBdyLmt.v[2]:
+    @description: AlphaDstEstBdyLmt
+    @units: "rad/sec^2"
+    @default: 5.00E-03
+
+  .SysMomEstBdyLmt:
+    @datatype: uVector
+
+  ."SysMomEstBdyLmt.*":
+    @structname: "SysMomEstBdyLmt.*"
+
+  .SysMomEstBdyLmt.v[0]:
+    @description: "System Momentum Body Estimate Limit"
+    @units: N-m-s
+    @default: "degrees(2250000)"
+
+  .SysMomEstBdyLmt.v[1]:
+    @description: "System Momentum Body Estimate Limit"
+    @units: N-m-s
+    @default: "degrees(2250000)"
+
+  .SysMomEstBdyLmt.v[2]:
+    @description: "System Momentum Body Estimate Limit"
+    @units: N-m-s
+    @default: "degrees(2250000)"
+
+  .KStaRateUpdateGain:
+    @description: "STA Omega Update Gain"
+    @datatype: float64
+    @default: 0
+}
+
+table AnCovarConfigTable {
+  @buildstruct!
+  @fsw.component: AnCovarConfigTable
+  @id: 45
+
+  .clockResetVariance:
+    @units: "m^2"
+    @datatype: float32
+
+  .clockDriftResetVariance:
+    @units: "(m/s)^2"
+    @datatype: float32
+
+  .clockResetResidualThreshold:
+    @units: m
+    @datatype: float32
+
+  .clockResetResidualRangeThreshold:
+    @units: m
+    @datatype: float32
+
+  .clockResetMaxResidualEdits:
+    @units: count
+    @datatype: sint16
+
+  .spare:
+    @datatype: sint16
+}
+
+table AnDynamicTable {
+  @buildstruct!
+  @fsw.component: AnDynamicTable
+  @id: 41
+
+  .polarMotionReferenceTime:
+    @units: ModJulianDate
+    @datatype: float32
+
+  .polarMotionXCoordinateA1Coefficient:
+    @units: arcsec
+    @datatype: float32
+
+  .polarMotionXCoordinateA2Coefficient:
+    @units: "arcsec/day"
+    @datatype: float32
+
+  .polarMotionXCoordinateA3Coefficient:
+    @units: "arcsec/day^2"
+    @datatype: float32
+
+  .polarMotionXCoordinateA4Coefficient:
+    @units: "arcsec/day^3"
+    @datatype: float32
+
+  .polarMotionXCoordinateA5Coefficient:
+    @units: arcsec
+    @datatype: float32
+
+  .polarMotionYCoordinateA6Coefficient:
+    @units: "arcsec/day"
+    @datatype: float32
+
+  .polarMotionYCoordinateA7Coefficient:
+    @units: "arcsec/day^2"
+    @datatype: float32
+
+  .polarMotionYCoordinateA8Coefficient:
+    @units: "arcsec/day^3"
+    @datatype: float32
+
+  .polarMotionYCoordinateA9Coefficient:
+    @units: "arcsec/day^3"
+    @datatype: float32
+
+  .polarMotionYCoordinateA10Coefficient:
+    @units: "arcsec/day^3"
+    @datatype: float32
+
+  .UTCUT1ReferenceTime:
+    @units: ModJulianDate
+    @datatype: float32
+
+  .UTCUT1ConstantBias:
+    @units: seconds
+    @datatype: float32
+
+  .UTCUT1LinearCoefficient:
+    @units: "seconds/day"
+    @datatype: float32
+
+  .solarFluxValue:
+    @units: "1E-21watts/m^2"
+    @datatype: sint16
+
+  .spare:
+    @datatype: sint16
+
+  .lagAngleOfTheDiurnalBulge:
+    @units: radians
+    @datatype: float32
+
+  .GPSUTCOffset:
+    @units: seconds
+    @datatype: float32
+
+  .timeValid:
+    @datatype: GpsTime
+
+  ."timeValid.*":
+    @structname: "timeValid.*"
+}
+
+table AnFdcTable {
+  @buildstruct!
+  @fsw.component: AnFdcTable
+  @id: 37
+
+  .RSSPositionSigmaMaximumTolerancePriorToConvergence:
+    @units: meters
+    @datatype: float32
+
+  .RSSPositionSigmaMaximumToleranceAfterConvergence:
+    @units: meters
+    @datatype: float32
+
+  .RSSVelocitySigmaMaximumTolerancePriorToConvergence:
+    @units: "m/s"
+    @datatype: float32
+
+  .RSSVelocitySigmaMaximumToleranceAfterConvergence:
+    @units: "m/s"
+    @datatype: float32
+
+  .RSSPositionSigmaConvergenceTolerance:
+    @units: meters
+    @datatype: float32
+
+  .RSSVelocitySigmaConvergenceTolerance:
+    @units: "m/s"
+    @datatype: float32
+
+  .semimajorAxisSigmaConvergenceTolerance:
+    @units: meters
+    @datatype: float32
+
+  .receiverRSSPositionDifferenceTolerance:
+    @units: meters
+    @datatype: float32
+
+  .measurementResidualEditSampleSize:
+    @datatype: sint16
+
+  .measurementResidualEditPercentageTolerance:
+    @units: percent
+    @datatype: sint16
+
+  .measResidEditMaxMissingMeasurements:
+    @datatype: sint16
+
+  .upgradeCountThreshold:
+    @datatype: sint16
+
+  .minPerigee:
+    @datatype: float32
+
+  .maxApogee:
+    @datatype: float32
+}
+
+table AnGpsEphemTable {
+  @buildstruct!
+  @fsw.component: AnGpsEphemTable
+  @id: 43
+
+  .Ephem:
+    @datatype: ReceiverInterface_GPSEphemerisType
+    @array: DBT_SV_ID_TYPE_MAX
+
+  ."Ephem[*":
+    @structname: "Ephem[*"
+}
+
+table AnGpsMiceTable {
+  @buildstruct!
+  @fsw.component: AnGpsMiceTable
+  @id: 50
+
+  .Mice:
+    @datatype: ReceiverInterface_GPSMICEType
+    @array: DBT_SV_ID_TYPE_MAX
+
+  ."Mice[*":
+    @structname: "Mice[*"
+}
+
+table AnHpCfgTable {
+  @buildstruct!
+  @fsw.component: AnHpCfgTable
+  @id: 47
+
+  .cosineExponent:
+    @datatype: sint16
+
+  .spare:
+    @datatype: sint16
+}
+
+table AnInitStateVarRicTable {
+  @buildstruct!
+  @fsw.component: AnInitStateVarRicTable
+  @id: 40
+
+  .radialPositionVariance:
+    @units: "m^2"
+    @datatype: float32
+
+  .inTrackPositionVariance:
+    @units: "m^2"
+    @datatype: float32
+
+  .crossTrackPositionVariance:
+    @units: "m^2"
+    @datatype: float32
+
+  .radialVelocityVariance:
+    @units: "m^2/s^2"
+    @datatype: float32
+
+  .inTrackVelocityVariance:
+    @units: "m^2/s^2"
+    @datatype: float32
+
+  .crossTrackVelocityVariance:
+    @units: "m^2/s^2"
+    @datatype: float32
+
+  .atmosphericDragScaleFactorVariance:
+    @datatype: float32
+
+  .receiverTimeBiasVariance:
+    @units: "m^2"
+    @datatype: float32
+
+  .receiverTimeBiasRateVariance:
+    @units: "m^2/s^2"
+    @datatype: float32
+}
+
+table AnInitStateVarXyzTable {
+  @buildstruct!
+  @fsw.component: AnInitStateVarXyzTable
+  @id: 39
+
+  .xPositionVariance:
+    @units: "m^2"
+    @datatype: float32
+
+  .yPositionVariance:
+    @units: "m^2"
+    @datatype: float32
+
+  .zPositionVariance:
+    @units: "m^2"
+    @datatype: float32
+
+  .xVelocityVariance:
+    @units: "m^2/s^2"
+    @datatype: float32
+
+  .yVelocityVariance:
+    @units: "m^2/s^2"
+    @datatype: float32
+
+  .zVelocityVariance:
+    @units: "m^2/s^2"
+    @datatype: float32
+
+  .atmosphericDragScaleFactorVariance:
+    @datatype: float32
+
+  .receiverTimeBiasVariance:
+    @units: "m^2"
+    @datatype: float32
+
+  .receiverTimeBiasRateVariance:
+    @units: "m^2/s^2"
+    @datatype: float32
+}
+
+table AnInitStateVecTable {
+  @buildstruct!
+  @fsw.component: AnInitStateVecTable
+  @id: 38
+
+  .xPositionInJ2000:
+    @units: meters
+    @datatype: float64
+
+  .yPositionInJ2000:
+    @units: meters
+    @datatype: float64
+
+  .zPositionInJ2000:
+    @units: meters
+    @datatype: float64
+
+  .xVelocityInJ2000:
+    @units: "m/s"
+    @datatype: float64
+
+  .yVelocityInJ2000:
+    @units: "m/s"
+    @datatype: float64
+
+  .zVelocityInJ2000:
+    @units: "m/s"
+    @datatype: float64
+
+  .atmosphericDragScaleFactor:
+    @datatype: float32
+
+  .receiverTimeBias:
+    @units: meters
+    @datatype: float32
+
+  .receiverTimeBiasRate:
+    @units: "m/s"
+    @datatype: float32
+
+  .timeTag:
+    @datatype: GpsTime
+
+  ."timeTag.*":
+    @structname: "timeTag.*"
+}
+
+table AnIoOptionsTable {
+  @buildstruct!
+  @fsw.component: AnIoOptionsTable
+  @id: 35
+
+  .processPseudorangeMeasurements:
+    @datatype: uint8
+
+  .processDopplerMeasurements:
+    @datatype: uint8
+
+  .spare:
+    @datatype: sint16
+}
+
+table AnManeuverTable {
+  @buildstruct!
+  @fsw.component: AnManeuverTable
+  @id: 42
+
+  .queue:
+    @datatype: ManeuverDataType
+    @array: DBT_GOODS_NUMBER_MANEUVERS
+
+  ."queue[*":
+    @structname: "queue[*"
+}
+
+table AnMeasSelTable {
+  @buildstruct!
+  @fsw.component: AnMeasSelTable
+  @id: 36
+
+  .minimumSamplingFrequencySameGPSSV:
+    @units: seconds
+    @datatype: float32
+
+  .GPSSVIDSelected:
+    @datatype: uint8
+    @array: DBT_SV_ID_TYPE_MAX
+
+  ."GPSSVIDSelected[*":
+    @structname: "GPSSVIDSelected[*"
+}
+
+table AnMinMaxTable {
+  @buildstruct!
+  @fsw.component: AnMinMaxTable
+  @id: 44
+
+  .range:
+    @datatype: MinMaxValues
+    @array: DBT_MINMAX_MAXIMUM_INDEX
+
+  ."range[*":
+    @structname: "range[*"
+}
+
+table AnOpValuesTable {
+  @buildstruct!
+  @fsw.component: AnOpValuesTable
+  @id: 34
+
+  .measurementResidualEditingRatio:
+    @datatype: sint16
+
+  .earthGravityModelSize:
+    @datatype: sint16
+
+  .pseudorangeMeasurementNoiseWeight:
+    @units: meters
+    @datatype: float32
+
+  .dopplerMeasurementNoiseWeight:
+    @units: Hertz
+    @datatype: float32
+
+  .ionosphericElevationLimit:
+    @units: degrees
+    @datatype: float32
+
+  .heightOfTheAtmosphere:
+    @units: meters
+    @datatype: float32
+
+  .earthGravityStateNoiseRadialCorrelationTime:
+    @units: seconds
+    @datatype: float32
+
+  .earthGravityStateNoiseInTrackCorrelationTime:
+    @units: seconds
+    @datatype: float32
+
+  .earthGravityStateNoiseCrossTrackCorrelationTime:
+    @units: seconds
+    @datatype: float32
+
+  .otherRadialStateNoiseSpectralDensity:
+    @units: "m^2/s"
+    @datatype: float32
+
+  .otherInTrackStateNoiseSpectralDensity:
+    @units: "m^2/s"
+    @datatype: float32
+
+  .otherCrossTrackStateNoiseSpectralDensity:
+    @units: "m^2/s"
+    @datatype: float32
+
+  .dragScaleFactorStateNoiseSpectralDensity:
+    @units: Hertz
+    @datatype: float32
+
+  .receiverClockBiasStateNoiseSpectralDensity:
+    @units: "m/s"
+    @datatype: float32
+
+  .receiverClockBiasDriftStateNoiseSpectralDensity:
+    @units: "m/s^2"
+    @datatype: float32
+
+  .mnvrAccelStateNoiseVariance:
+    @units: "m^2/s^4"
+    @datatype: float32
+
+  .maximumURA:
+    @units: meters
+    @datatype: float32
+
+  .maximumEphemerisAge:
+    @units: seconds
+    @datatype: float32
+
+  .correctTheMeasurementTimetag:
+    @datatype: uint8
+
+  .spareBool:
+    @datatype: uint8
+
+  .spareInt2:
+    @datatype: sint16
+}
+
+table AnOrbCfgTable {
+  @buildstruct!
+  @fsw.component: AnOrbCfgTable
+  @id: 48
+
+  .minIntegrationDt:
+    @units: seconds
+    @datatype: float32
+
+  .maxIntegrationDt:
+    @units: seconds
+    @datatype: float32
+
+  .maxNumSteps:
+    @datatype: sint16
+
+  .spare:
+    @datatype: sint16
+}
+
+table AnUserConstTable {
+  @buildstruct!
+  @fsw.component: AnUserConstTable
+  @id: 46
+
+  .area:
+    @datatype: float64
+
+  .mass:
+    @datatype: float64
+
+  .radialAntennaOffset:
+    @units: m
+    @datatype: float64
+
+  .intrackAntennaOffset:
+    @units: m
+    @datatype: float64
+
+  .crosstrackAntennaOffset:
+    @units: m
+    @datatype: float64
+}
+
+table AnLeapSecTable {
+  @description: "Leap Seconds Table"
+  @buildstruct!
+  @fsw.component:  AnLeapSecTable
+  @id: 51
+
+  .julianDate:
+    @datatype: float32
+    @array: "25"
+
+  ."julianDate[*":
+    @structname: "julianDate[*"
+
+  .julianDate[0]:
+    @units: "JD"
+    @default: 2451179.5
+
+  .julianDate[1]:
+    @units: "JD"
+    @default: 2453736.5
+
+  .julianDate[2]:
+    @units: "JD"
+    @default: 2454832.5
+
+  .julianDate[3]:
+    @units: "JD"
+    @default: 2456109.5
+
+  .julianDate[4]:
+    @units: "JD"
+    @default: 2457204.5
+
+  .julianDate[5]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[6]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[7]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[8]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[9]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[10]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[11]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[12]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[13]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[14]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[15]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[16]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[17]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[18]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[19]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[20]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[21]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[22]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[23]:
+    @units: "JD"
+    @default: 0.0
+
+  .julianDate[24]:
+    @units: "JD"
+    @default: 0.0
+
+  .leapSec:
+    @datatype: float32
+    @array: "25"
+
+  ."leapSec[*":
+    @structname: "leapSec[*"
+
+  .leapSec[0]:
+    @units: "sec"
+    @default: 32.0
+
+  .leapSec[1]:
+    @units: "sec"
+    @default: 33.0
+
+  .leapSec[2]:
+    @units: "sec"
+    @default: 34.0
+
+  .leapSec[3]:
+    @units: "sec"
+    @default: 35.0
+
+  .leapSec[4]:
+    @units: "sec"
+    @default: 36.0
+
+  .leapSec[5]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[6]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[7]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[8]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[9]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[10]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[11]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[12]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[13]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[14]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[15]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[16]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[17]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[18]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[19]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[20]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[21]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[22]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[23]:
+    @units: "sec"
+    @default: 37.0
+
+  .leapSec[24]:
+    @units: "sec"
+    @default: 37.0
+}
+
+table AP_ACATCTABLE {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 20
+
+  .EnableCtlTorque:
+    @datatype: uint16
+    @array: DBT_NUM_AC_AP_MODE
+
+  ."EnableCtlTorque[*":
+    @structname: "EnableCtlTorque[*"
+
+  .EnableGyrTorque:
+    @datatype: uint16
+    @array: DBT_NUM_AC_AP_MODE
+
+  ."EnableGyrTorque[*":
+    @structname: "EnableGyrTorque[*"
+
+  .EnableCmdTorque:
+    @datatype: uint16
+    @array: DBT_NUM_AC_AP_MODE
+
+  ."EnableCmdTorque[*":
+    @structname: "EnableCmdTorque[*"
+
+  .EnableLPF:
+    @datatype: uint16
+    @array: "DBT_NUM_AC_AP_MODE,DBT_NUM_SC_CFG"
+
+  ."EnableLPF[*":
+    @structname: "EnableLPF[*"
+
+  .TorqueFilX:
+    @datatype: lpf_param_type
+
+  ."TorqueFilX.*":
+    @structname: "TorqueFilX.*"
+
+  .TorqueFilY:
+    @datatype: lpf_param_type
+
+  ."TorqueFilY.*":
+    @structname: "TorqueFilY.*"
+
+  .TorqueFilZ:
+    @datatype: lpf_param_type
+
+  ."TorqueFilZ.*":
+    @structname: "TorqueFilZ.*"
+}
+
+table AP_ACATCTABLE_CI {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 24
+
+  .Ci:
+    @datatype: uVector
+    @array: "DBT_NUM_AC_AP_MODE,DBT_NUM_SC_CFG"
+
+  ."Ci[*":
+    @structname: "Ci[*"
+}
+
+table AP_ACATCTABLE_CP {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 22
+
+  .Cp:
+    @datatype: uVector
+    @array: "DBT_NUM_AC_AP_MODE,DBT_NUM_SC_CFG"
+
+  ."Cp[*":
+    @structname: "Cp[*"
+}
+
+table AP_ACATCTABLE_CR {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 23
+
+  .Cr:
+    @datatype: uVector
+    @array: "DBT_NUM_AC_AP_MODE,DBT_NUM_SC_CFG"
+
+  ."Cr[*":
+    @structname: "Cr[*"
+}
+
+table AP_ACATCTABLE_FDC_DELTAV {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 28
+
+  .DeltaV:
+    @datatype: ac_ap_atc_table_fdc_deltav_type
+
+  ."DeltaV.*":
+    @structname: "DeltaV.*"
+
+  .Fdc.DeltaV.ThetaErrHardThrBRE.v[0]:
+    @structname: DeltaV.ThetaErrHardThrBRE.v[0]
+
+  .Fdc.DeltaV.ThetaErrHardThrBRE.v[1]:
+    @structname: DeltaV.ThetaErrHardThrBRE.v[1]
+
+  .Fdc.DeltaV.ThetaErrHardThrBRE.v[2]:
+    @structname: DeltaV.ThetaErrHardThrBRE.v[2]
+
+  .Fdc.DeltaV.ThetaErrSoftThrBRE.v[0]:
+    @structname: DeltaV.ThetaErrSoftThrBRE.v[0]
+
+  .Fdc.DeltaV.ThetaErrSoftThrBRE.v[1]:
+    @structname: DeltaV.ThetaErrSoftThrBRE.v[1]
+
+  .Fdc.DeltaV.ThetaErrSoftThrBRE.v[2]:
+    @structname: DeltaV.ThetaErrSoftThrBRE.v[2]
+
+  .Fdc.DeltaV.OmegaErrHardThrBRE.v[0]:
+    @structname: DeltaV.OmegaErrHardThrBRE.v[0]
+
+  .Fdc.DeltaV.OmegaErrHardThrBRE.v[1]:
+    @structname: DeltaV.OmegaErrHardThrBRE.v[1]
+
+  .Fdc.DeltaV.OmegaErrHardThrBRE.v[2]:
+    @structname: DeltaV.OmegaErrHardThrBRE.v[2]
+
+  .Fdc.DeltaV.OmegaErrSoftThrBRE.v[0]:
+    @structname: DeltaV.OmegaErrSoftThrBRE.v[0]
+
+  .Fdc.DeltaV.OmegaErrSoftThrBRE.v[1]:
+    @structname: DeltaV.OmegaErrSoftThrBRE.v[1]
+
+  .Fdc.DeltaV.OmegaErrSoftThrBRE.v[2]:
+    @structname: DeltaV.OmegaErrSoftThrBRE.v[2]
+
+  .Fdc.DeltaV.ThetaErrHardCntBRE:
+    @structname: DeltaV.ThetaErrHardCntBRE
+
+  .Fdc.DeltaV.ThetaErrSoftCntBRE:
+    @structname: DeltaV.ThetaErrSoftCntBRE
+
+  .Fdc.DeltaV.OmegaErrHardCntBRE:
+    @structname: DeltaV.OmegaErrHardCntBRE
+
+  .Fdc.DeltaV.OmegaErrSoftCntBRE:
+    @structname: DeltaV.OmegaErrSoftCntBRE
+
+  .Fdc.DeltaV.ThetaErrHardThrREA.v[0]:
+    @structname: DeltaV.ThetaErrHardThrREA.v[0]
+
+  .Fdc.DeltaV.ThetaErrHardThrREA.v[1]:
+    @structname: DeltaV.ThetaErrHardThrREA.v[1]
+
+  .Fdc.DeltaV.ThetaErrHardThrREA.v[2]:
+    @structname: DeltaV.ThetaErrHardThrREA.v[2]
+
+  .Fdc.DeltaV.ThetaErrSoftThrREA.v[0]:
+    @structname: DeltaV.ThetaErrSoftThrREA.v[0]
+
+  .Fdc.DeltaV.ThetaErrSoftThrREA.v[1]:
+    @structname: DeltaV.ThetaErrSoftThrREA.v[1]
+
+  .Fdc.DeltaV.ThetaErrSoftThrREA.v[2]:
+    @structname: DeltaV.ThetaErrSoftThrREA.v[2]
+
+  .Fdc.DeltaV.OmegaErrHardThrREA.v[0]:
+    @structname: DeltaV.OmegaErrHardThrREA.v[0]
+
+  .Fdc.DeltaV.OmegaErrHardThrREA.v[1]:
+    @structname: DeltaV.OmegaErrHardThrREA.v[1]
+
+  .Fdc.DeltaV.OmegaErrHardThrREA.v[2]:
+    @structname: DeltaV.OmegaErrHardThrREA.v[2]
+
+  .Fdc.DeltaV.OmegaErrSoftThrREA.v[0]:
+    @structname: DeltaV.OmegaErrSoftThrREA.v[0]
+
+  .Fdc.DeltaV.OmegaErrSoftThrREA.v[1]:
+    @structname: DeltaV.OmegaErrSoftThrREA.v[1]
+
+  .Fdc.DeltaV.OmegaErrSoftThrREA.v[2]:
+    @structname: DeltaV.OmegaErrSoftThrREA.v[2]
+
+  .Fdc.DeltaV.ThetaErrHardCntREA:
+    @structname: DeltaV.ThetaErrHardCntREA
+
+  .Fdc.DeltaV.ThetaErrSoftCntREA:
+    @structname: DeltaV.ThetaErrSoftCntREA
+
+  .Fdc.DeltaV.OmegaErrHardCntREA:
+    @structname: DeltaV.OmegaErrHardCntREA
+
+  .Fdc.DeltaV.OmegaErrSoftCntREA:
+    @structname: DeltaV.OmegaErrSoftCntREA
+}
+
+table AP_ACATCTABLE_FDC_SUNACQ {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 25
+
+  .SunAcq:
+    @datatype: ac_ap_atc_table_fdc_sunacq_type
+
+  ."SunAcq.*":
+    @structname: "SunAcq.*"
+
+  .Fdc.SunAcq.ThetaErrHardThr.v[0]:
+    @structname: SunAcq.ThetaErrHardThr.v[0]
+
+  .Fdc.SunAcq.ThetaErrHardThr.v[1]:
+    @structname: SunAcq.ThetaErrHardThr.v[1]
+
+  .Fdc.SunAcq.ThetaErrHardThr.v[2]:
+    @structname: SunAcq.ThetaErrHardThr.v[2]
+
+  .Fdc.SunAcq.ThetaErrSoftThr.v[0]:
+    @structname: SunAcq.ThetaErrSoftThr.v[0]
+
+  .Fdc.SunAcq.ThetaErrSoftThr.v[1]:
+    @structname: SunAcq.ThetaErrSoftThr.v[1]
+
+  .Fdc.SunAcq.ThetaErrSoftThr.v[2]:
+    @structname: SunAcq.ThetaErrSoftThr.v[2]
+
+  .Fdc.SunAcq.OmegaErrHardThr.v[0]:
+    @structname: SunAcq.OmegaErrHardThr.v[0]
+
+  .Fdc.SunAcq.OmegaErrHardThr.v[1]:
+    @structname: SunAcq.OmegaErrHardThr.v[1]
+
+  .Fdc.SunAcq.OmegaErrHardThr.v[2]:
+    @structname: SunAcq.OmegaErrHardThr.v[2]
+
+  .Fdc.SunAcq.OmegaErrSoftThr.v[0]:
+    @structname: SunAcq.OmegaErrSoftThr.v[0]
+
+  .Fdc.SunAcq.OmegaErrSoftThr.v[1]:
+    @structname: SunAcq.OmegaErrSoftThr.v[1]
+
+  .Fdc.SunAcq.OmegaErrSoftThr.v[2]:
+    @structname: SunAcq.OmegaErrSoftThr.v[2]
+
+  .Fdc.SunAcq.ThetaErrHardCnt:
+    @structname: SunAcq.ThetaErrHardCnt
+
+  .Fdc.SunAcq.ThetaErrSoftCnt:
+    @structname: SunAcq.ThetaErrSoftCnt
+
+  .Fdc.SunAcq.OmegaErrHardCnt:
+    @structname: SunAcq.OmegaErrHardCnt
+
+  .Fdc.SunAcq.OmegaErrSoftCnt:
+    @structname: SunAcq.OmegaErrSoftCnt
+}
+
+table AP_ACATCTABLE_LMT {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 21
+
+  .Lmt:
+    @datatype: ac_ap_atc_table_lmt_type
+
+  ."Lmt.*":
+    @structname: "Lmt.*"
+}
+
+table AP_ACCSSTABLE {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 37
+
+  .AtoDGainFactor:
+    @description: "CSS A/D Gain Factor"
+    @units: "N/A"
+    @datatype: float48.ut69r
+
+  .ScaleFactor:
+    @description: "CSS Scale Factor"
+    @units: "N/A"
+    @datatype: float48.ut69r
+    
+  .Fdc:
+    @datatype: ac_ap_csstable_fdc_type
+
+  .SpareReal1:
+    @units: "N/A"
+    @datatype: float48.ut69r
+
+  .SdotFiltera1:
+    @description: SdotFiltera1
+    @units: "N/A"
+    @datatype: float48.ut69r
+
+  .SdotFilterb1:
+    @description: SdotFilterb1
+    @units: "N/A"
+    @datatype: float48.ut69r
+
+  .AlbedoThr:
+    @datatype: float48.ut69r
+    @array: 8
+
+  ."AlbedoThr[*":
+    @structname: "AlbedoThr[*"
+
+  .AlbedoThr[0]:
+    @units: Amp
+
+  .AlbedoThr[1]:
+    @units: Amp
+
+  .AlbedoThr[2]:
+    @units: Amp
+
+  .AlbedoThr[3]:
+    @units: Amp
+
+  .AlbedoThr[4]:
+    @units: Amp
+
+  .AlbedoThr[5]:
+    @units: Amp
+
+  .AlbedoThr[6]:
+    @units: Amp
+
+  .AlbedoThr[7]:
+    @units: Amp
+
+  .SpareReal2:
+    @units: "N/A"
+    @datatype: float48.ut69r
+
+  .SpareReal3:
+    @units: "N/A"
+    @datatype: float48.ut69r
+
+  .Opposing:
+    @datatype: uint16
+    @array: 8
+
+  ."Opposing[*":
+    @structname: "Opposing[*"
+
+  .Opposing[0]:
+    @units: "N/A"
+
+  .Opposing[1]:
+    @units: "N/A"
+
+  .Opposing[2]:
+    @units: "N/A"
+
+  .Opposing[3]:
+    @units: "N/A"
+
+  .Opposing[4]:
+    @units: "N/A"
+
+  .Opposing[5]:
+    @units: "N/A"
+
+  .Opposing[6]:
+    @units: "N/A"
+
+  .Opposing[7]:
+    @units: "N/A"
+
+  .StartEclipseCount:
+    @description: StartEclipseCount
+    @units: "N/A"
+    @datatype: uint16
+
+  .EndEclipseCount:
+    @description: EndEclipseCount
+    @units: "N/A"
+    @datatype: uint16
+
+  .MaxEclipseDuration:
+    @description: MaxEclipseDuration
+    @units: "N/A"
+    @datatype: uint16
+
+  .SpareWord:
+    @units: "N/A"
+    @datatype: uint16
+
+  .MaxDetectorCurrent:
+    @datatype: float48.ut69r
+    @array: 8
+
+  ."MaxDetectorCurrent[*":
+    @structname: "MaxDetectorCurrent[*"
+
+  .MaxDetectorCurrent[0]:
+    @description: "Max value for valid detector (1)"
+    @units: Amp
+
+  .MaxDetectorCurrent[1]:
+    @description: "Max value for valid detector (2)"
+    @units: Amp
+
+  .MaxDetectorCurrent[2]:
+    @description: "Max value for valid detector (3)"
+    @units: Amp
+
+  .MaxDetectorCurrent[3]:
+    @description: "Max value for valid detector (4)"
+    @units: Amp
+
+  .MaxDetectorCurrent[4]:
+    @description: "Max value for valid detector (5)"
+    @units: Amp
+
+  .MaxDetectorCurrent[5]:
+    @description: "Max value for valid detector (6)"
+    @units: Amp
+
+  .MaxDetectorCurrent[6]:
+    @description: "Max value for valid detector (7)"
+    @units: Amp
+
+  .MaxDetectorCurrent[7]:
+    @description: "Max value for valid detector (8)"
+    @units: Amp
+
+  .MinDetectorCurrent:
+    @datatype: float48.ut69r
+    @array: 8
+
+  ."MinDetectorCurrent[*":
+    @structname: "MinDetectorCurrent[*"
+
+  .MinDetectorCurrent[0]:
+    @description: "Min value for valid detector (1)"
+    @units: Amp
+
+  .MinDetectorCurrent[1]:
+    @description: "Min value for valid detector (2)"
+    @units: Amp
+
+  .MinDetectorCurrent[2]:
+    @description: "Min value for valid detector (3)"
+    @units: Amp
+
+  .MinDetectorCurrent[3]:
+    @description: "Min value for valid detector (4)"
+    @units: Amp
+
+  .MinDetectorCurrent[4]:
+    @description: "Min value for valid detector (5)"
+    @units: Amp
+
+  .MinDetectorCurrent[5]:
+    @description: "Min value for valid detector (6)"
+    @units: Amp
+
+  .MinDetectorCurrent[6]:
+    @description: "Min value for valid detector (7)"
+    @units: Amp
+
+  .MinDetectorCurrent[7]:
+    @description: "Min value for valid detector (8)"
+    @units: Amp
+
+  .CssEye:
+    @datatype: float48.ut69r
+    @array: "8,3"
+
+  ."CssEye[*":
+    @structname: "CssEye[*"
+}
+
+table AP_ACCSSTABLE_FDC {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 41
+
+  .Fdc:
+    @datatype: ac_csstable_fdc_type
+
+  ."Fdc.*":
+    @structname: "Fdc.*"
+
+  .CurrentTestCnt[0]:
+    @structname: Fdc.CurrentTestCnt[0]
+
+  .CurrentTestCnt[1]:
+    @structname: Fdc.CurrentTestCnt[1]
+
+  .CurrentTestCnt[2]:
+    @structname: Fdc.CurrentTestCnt[2]
+
+  .CurrentTestCnt[3]:
+    @structname: Fdc.CurrentTestCnt[3]
+
+  .CurrentTestCnt[4]:
+    @structname: Fdc.CurrentTestCnt[4]
+
+  .CurrentTestCnt[5]:
+    @structname: Fdc.CurrentTestCnt[5]
+
+  .CurrentTestCnt[6]:
+    @structname: Fdc.CurrentTestCnt[6]
+
+  .CurrentTestCnt[7]:
+    @structname: Fdc.CurrentTestCnt[7]
+
+  .MaxDetectorCurrent[0]:
+    @structname: Fdc.MaxDetectorCurrent[0]
+
+  .MaxDetectorCurrent[1]:
+    @structname: Fdc.MaxDetectorCurrent[1]
+
+  .MaxDetectorCurrent[2]:
+    @structname: Fdc.MaxDetectorCurrent[2]
+
+  .MaxDetectorCurrent[3]:
+    @structname: Fdc.MaxDetectorCurrent[3]
+
+  .MaxDetectorCurrent[4]:
+    @structname: Fdc.MaxDetectorCurrent[4]
+
+  .MaxDetectorCurrent[5]:
+    @structname: Fdc.MaxDetectorCurrent[5]
+
+  .MaxDetectorCurrent[6]:
+    @structname: Fdc.MaxDetectorCurrent[6]
+
+  .MaxDetectorCurrent[7]:
+    @structname: Fdc.MaxDetectorCurrent[7]
+}
+
+table AP_ACCSSTABLE_PI2 {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 38
+
+  .PI003:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI003[*":
+    @structname: "PI003[*"
+
+  .PI005:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI005[*":
+    @structname: "PI005[*"
+
+  .PI006:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI006[*":
+    @structname: "PI006[*"
+
+  .PI009:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI009[*":
+    @structname: "PI009[*"
+
+  .PI010:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI010[*":
+    @structname: "PI010[*"
+
+  .PI012:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI012[*":
+    @structname: "PI012[*"
+
+  .PI017:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI017[*":
+    @structname: "PI017[*"
+
+  .PI018:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI018[*":
+    @structname: "PI018[*"
+
+  .PI024:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI024[*":
+    @structname: "PI024[*"
+
+  .PI033:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI033[*":
+    @structname: "PI033[*"
+
+  .PI034:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI034[*":
+    @structname: "PI034[*"
+
+  .PI036:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI036[*":
+    @structname: "PI036[*"
+
+  .PI048:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI048[*":
+    @structname: "PI048[*"
+
+  .PI066:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI066[*":
+    @structname: "PI066[*"
+
+  .PI068:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI068[*":
+    @structname: "PI068[*"
+
+  .PI072:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI072[*":
+    @structname: "PI072[*"
+
+  .PI080:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI080[*":
+    @structname: "PI080[*"
+
+  .PI096:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI096[*":
+    @structname: "PI096[*"
+
+  .PI129:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI129[*":
+    @structname: "PI129[*"
+
+  .PI132:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI132[*":
+    @structname: "PI132[*"
+
+  .PI136:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI136[*":
+    @structname: "PI136[*"
+
+  .PI144:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI144[*":
+    @structname: "PI144[*"
+
+  .PI160:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI160[*":
+    @structname: "PI160[*"
+
+  .PI192:
+    @datatype: float48.ut69r
+    @array: "3,2"
+
+  ."PI192[*":
+    @structname: "PI192[*"
+}
+
+table AP_ACCSSTABLE_PI3 {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 39
+
+  .PI007:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI007[*":
+    @structname: "PI007[*"
+
+  .PI011:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI011[*":
+    @structname: "PI011[*"
+
+  .PI013:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI013[*":
+    @structname: "PI013[*"
+
+  .PI014:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI014[*":
+    @structname: "PI014[*"
+
+  .PI019:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI019[*":
+    @structname: "PI019[*"
+
+  .PI025:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI025[*":
+    @structname: "PI025[*"
+
+  .PI026:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI026[*":
+    @structname: "PI026[*"
+
+  .PI035:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI035[*":
+    @structname: "PI035[*"
+
+  .PI037:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI037[*":
+    @structname: "PI037[*"
+
+  .PI038:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI038[*":
+    @structname: "PI038[*"
+
+  .PI049:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI049[*":
+    @structname: "PI049[*"
+
+  .PI050:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI050[*":
+    @structname: "PI050[*"
+
+  .PI070:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI070[*":
+    @structname: "PI070[*"
+
+  .PI074:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI074[*":
+    @structname: "PI074[*"
+
+  .PI076:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI076[*":
+    @structname: "PI076[*"
+
+  .PI082:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI082[*":
+    @structname: "PI082[*"
+
+  .PI088:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI088[*":
+    @structname: "PI088[*"
+
+  .PI098:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI098[*":
+    @structname: "PI098[*"
+
+  .PI100:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI100[*":
+    @structname: "PI100[*"
+
+  .PI112:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI112[*":
+    @structname: "PI112[*"
+
+  .PI133:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI133[*":
+    @structname: "PI133[*"
+
+  .PI137:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI137[*":
+    @structname: "PI137[*"
+
+  .PI140:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI140[*":
+    @structname: "PI140[*"
+
+  .PI145:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI145[*":
+    @structname: "PI145[*"
+
+  .PI152:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI152[*":
+    @structname: "PI152[*"
+
+  .PI161:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI161[*":
+    @structname: "PI161[*"
+
+  .PI164:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI164[*":
+    @structname: "PI164[*"
+
+  .PI176:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI176[*":
+    @structname: "PI176[*"
+
+  .PI196:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI196[*":
+    @structname: "PI196[*"
+
+  .PI200:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI200[*":
+    @structname: "PI200[*"
+
+  .PI208:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI208[*":
+    @structname: "PI208[*"
+
+  .PI224:
+    @datatype: float48.ut69r
+    @array: "3,3"
+
+  ."PI224[*":
+    @structname: "PI224[*"
+}
+
+table AP_ACCSSTABLE_PI4 {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 40
+
+  .PI015:
+    @datatype: float48.ut69r
+    @array: "3,4"
+
+  ."PI015[*":
+    @structname: "PI015[*"
+
+  .PI027:
+    @datatype: float48.ut69r
+    @array: "3,4"
+
+  ."PI027[*":
+    @structname: "PI027[*"
+
+  .PI039:
+    @datatype: float48.ut69r
+    @array: "3,4"
+
+  ."PI039[*":
+    @structname: "PI039[*"
+
+  .PI051:
+    @datatype: float48.ut69r
+    @array: "3,4"
+
+  ."PI051[*":
+    @structname: "PI051[*"
+
+  .PI078:
+    @datatype: float48.ut69r
+    @array: "3,4"
+
+  ."PI078[*":
+    @structname: "PI078[*"
+
+  .PI102:
+    @datatype: float48.ut69r
+    @array: "3,4"
+
+  ."PI102[*":
+    @structname: "PI102[*"
+
+  .PI114:
+    @datatype: float48.ut69r
+    @array: "3,4"
+
+  ."PI114[*":
+    @structname: "PI114[*"
+
+  .PI141:
+    @datatype: float48.ut69r
+    @array: "3,4"
+
+  ."PI141[*":
+    @structname: "PI141[*"
+
+  .PI153:
+    @datatype: float48.ut69r
+    @array: "3,4"
+
+  ."PI153[*":
+    @structname: "PI153[*"
+
+  .PI177:
+    @datatype: float48.ut69r
+    @array: "3,4"
+
+  ."PI177[*":
+    @structname: "PI177[*"
+
+  .PI204:
+    @datatype: float48.ut69r
+    @array: "3,4"
+
+  ."PI204[*":
+    @structname: "PI204[*"
+
+  .PI216:
+    @datatype: float48.ut69r
+    @array: "3,4"
+
+  ."PI216[*":
+    @structname: "PI216[*"
+
+  .PI228:
+    @datatype: float48.ut69r
+    @array: "3,4"
+
+  ."PI228[*":
+    @structname: "PI228[*"
+
+  .PI240:
+    @datatype: float48.ut69r
+    @array: "3,4"
+
+  ."PI240[*":
+    @structname: "PI240[*"
+
+  .FailTimeOut:
+    @description: "BlindZoneTimer Default"
+    @datatype: uint16
+
+  .EnableRIU2Tlm:
+    @datatype: uint16
+    @array: DBT_NUM_OF_CSS
+
+  ."EnableRIU2Tlm[*":
+    @structname: "EnableRIU2Tlm[*"
+
+  .SpareWord2:
+    @datatype: uint16
+}
+
+table AP_ACIRUTABLE {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 34
+
+  .TimeCntMax:
+    @description: "Maximum Time Count, cnt"
+    @units: cnt
+    @datatype: sint32
+
+  .DcmBdyToGyr:
+    @datatype: uVector
+    @array: DBT_NUM_OF_GYR
+
+  ."DcmBdyToGyr[*":
+    @structname: "DcmBdyToGyr[*"
+
+  .GyrAngleWhiteNoise:
+    @description: "Gyro Angle White Noise For KF Q, rad^2"
+    @units: "rad^2"
+    @datatype: float64
+
+  .GyrAngleRandomWalk:
+    @description: "Gyro Angle Random Walk For KF Q, rad^2/sec"
+    @units: "rad^2/sec"
+    @datatype: float64
+
+  .GyrRateRandomWalk:
+    @description: "Gyro Rate Random Walk For KF Q, rad^2/sec^3"
+    @units: "rad^2/sec^3"
+    @datatype: float64
+
+  .ScaleFactor:
+    @datatype: float64
+    @array: "2,DBT_NUM_OF_GYR"
+
+  ."ScaleFactor[*":
+    @structname: "ScaleFactor[*"
+
+  .DefaultGyrBias:
+    @datatype: float64
+    @array: DBT_NUM_OF_GYR
+
+  ."DefaultGyrBias[*":
+    @structname: "DefaultGyrBias[*"
+
+  .IruBiasLmt:
+    @datatype: uVector
+
+  ."IruBiasLmt.*":
+    @structname: "IruBiasLmt.*"
+
+  .TimeScaleFactor:
+    @description: "Time Scale Factor"
+    @units: "sec/cnt"
+    @datatype: float64
+
+  .WarmUpTime:
+    @description: "Warm Up Time, sec"
+    @units: sec
+    @datatype: float64
+
+  .Fdc:
+    @datatype: ac_ap_iru_table_fdc_type
+
+  ."Fdc.*":
+    @structname: "Fdc.*"
+}
+
+table AP_ACJETTABLE {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 35
+
+  .ControlJet:
+    @datatype: uint16
+    @array: "DBT_NUM_OF_CNT_JET,DBT_MAX_CONTROL_JETS"
+
+  ."ControlJet[*":
+    @structname: "ControlJet[*"
+
+  .PosDeltaVJet:
+    @datatype: uint16
+    @array: "DBT_NUM_OF_DV_JET,DBT_MAX_DELTA_V_JETS"
+
+  ."PosDeltaVJet[*":
+    @structname: "PosDeltaVJet[*"
+
+  .NegDeltaVJet:
+    @datatype: uint16
+    @array: "DBT_NUM_OF_DV_JET,DBT_MAX_DELTA_V_JETS"
+
+  ."NegDeltaVJet[*":
+    @structname: "NegDeltaVJet[*"
+
+  .ControlAxis:
+    @datatype: uint16
+    @array: "DBT_NUM_OF_CNT_JET,3"
+
+  ."ControlAxis[*":
+    @structname: "ControlAxis[*"
+
+  .MinNumOfLsb:
+    @datatype: uint16
+    @array: "ac_jet_id.NUM_OF_JET"
+
+  ."MinNumOfLsb[*":
+    @structname: "MinNumOfLsb[*"
+
+  .SustFireCnts:
+    @description: "Counts Added To Timer Load To Sustain Firing, cnt"
+    @units: cnt
+    @datatype: uint16
+    @default: 3
+
+  .EnableRwaTorqueMix:
+    @datatype: uint16
+    @array: "DBT_NUM_SC_CFG,DBT_NUM_AC_AP_MODE"
+
+  ."EnableRwaTorqueMix[*":
+    @structname: "EnableRwaTorqueMix[*"
+
+  .DeltaVTransitionCnt:
+    @description: "Transition From Delta V Count, cnt"
+    @units: cnt
+    @datatype: sint32
+    @default: "10*DBT_NUM_AC_CYCLES"
+
+  .EnableRIU2JetCmd:
+    @description: "Flag To Enable RIU2 Jet Commands"
+    @datatype: uint16
+    @conversion: True_False
+    @default: False
+
+  .OffDelay:
+    @datatype: float64
+    @array: "ac_jet_id.NUM_OF_JET"
+
+  ."OffDelay[*":
+    @structname: "OffDelay[*"
+
+  .JetSecPerLsb:
+    @description: "Jet Seconds Per LSB, sec"
+    @units: sec
+    @datatype: float64
+    @default: 0.001
+
+  .JetSecondsRemainingThr:
+    @description: "Remaining Jet Seconds Threshold, sec"
+    @units: sec
+    @datatype: float64
+    @default: 0.05
+
+  .JetForceMag:
+    @datatype: float64
+    @array: "ac_jet_id.NUM_OF_JET"
+
+  ."JetForceMag[*":
+    @structname: "JetForceMag[*"
+
+  .JetNormTorq:
+    @datatype: float64
+    @array: "ac_jet_id.NUM_OF_JET,3"
+
+  ."JetNormTorq[*":
+    @structname: "JetNormTorq[*"
+
+  .JetForceUnit:
+    @datatype: float64
+    @array: "ac_jet_id.NUM_OF_JET,3"
+
+  ."JetForceUnit[*":
+    @structname: "JetForceUnit[*"
+
+  .ThetaErrThrBRE:
+    @datatype: uVector
+
+  ."ThetaErrThrBRE.*":
+    @structname: "ThetaErrThrBRE.*"
+
+  .ThetaErrThrBRE.v[0]:
+    @description: "Transition From Delta V Attitude Error Threshold For BRE, rad"
+    @units: rad
+
+  .ThetaErrThrBRE.v[1]:
+    @description: "Transition From Delta V Attitude Error Threshold For BRE, rad"
+    @units: rad
+
+  .ThetaErrThrBRE.v[2]:
+    @description: "Transition From Delta V Attitude Error Threshold For BRE, rad"
+    @units: rad
+
+  .ThetaErrThrREA:
+    @datatype: uVector
+
+  ."ThetaErrThrREA.*":
+    @structname: "ThetaErrThrREA.*"
+
+  .ThetaErrThrREA.v[0]:
+    @description: "Transition From Delta V Attitude Error Threshold For REA, rad"
+    @units: rad
+
+  .ThetaErrThrREA.v[1]:
+    @description: "Transition From Delta V Attitude Error Threshold For REA, rad"
+    @units: rad
+
+  .ThetaErrThrREA.v[2]:
+    @description: "Transition From Delta V Attitude Error Threshold For REA, rad"
+    @units: rad
+
+  .OmegaErrThrBRE:
+    @datatype: uVector
+
+  ."OmegaErrThrBRE.*":
+    @structname: "OmegaErrThrBRE.*"
+
+  .OmegaErrThrBRE.v[0]:
+    @description: "Transition From Delta V Rate Error Threshold For BRE, rad/sec"
+    @units: "rad/sec"
+
+  .OmegaErrThrBRE.v[1]:
+    @description: "Transition From Delta V Rate Error Threshold For BRE, rad/sec"
+    @units: "rad/sec"
+
+  .OmegaErrThrBRE.v[2]:
+    @description: "Transition From Delta V Rate Error Threshold For BRE, rad/sec"
+    @units: "rad/sec"
+
+  .OmegaErrThrREA:
+    @datatype: uVector
+
+  ."OmegaErrThrREA.*":
+    @structname: "OmegaErrThrREA.*"
+
+  .OmegaErrThrREA.v[0]:
+    @description: "Transition From Delta V Rate Error Threshold For REA, rad/sec"
+    @units: "rad/sec"
+
+  .OmegaErrThrREA.v[1]:
+    @description: "Transition From Delta V Rate Error Threshold For REA, rad/sec"
+    @units: "rad/sec"
+
+  .OmegaErrThrREA.v[2]:
+    @description: "Transition From Delta V Rate Error Threshold For REA, rad/sec"
+    @units: "rad/sec"
+
+  .InitDeltaVTrqBiasScaleFactorBRE:
+    @description: "Delta V Torque Bias Scale Factor Applied During Start of BRE Delta V"
+    @datatype: float64
+    @default: 0.5
+
+  .InitDeltaVTrqBiasScaleFactorREA:
+    @description: "Delta V Torque Bias Scale Factor Applied During Start of REA Delta V"
+    @datatype: float64
+    @default: 0.2
+
+  .ResDeltaVTrqBiasScaleFactorBRE:
+    @description: "Delta V Torque Bias Scale Factor Applied During Tailoff (Residual) of BRE Delta V"
+    @datatype: float64
+    @default: 1.3
+
+  .ResDeltaVTrqBiasScaleFactorREA:
+    @description: "Delta V Torque Bias Scale Factor Applied During Tailoff (Residual) of REA Delta V"
+    @datatype: float64
+    @default: 1.5
+
+  .ResDeltaVIntErrScaleFactorBRE:
+    @description: "Integral Error Limit Bdy State Scale Factor Applied During Residual BRE Delta V"
+    @datatype: float64
+    @default: 0.6
+
+  .ResDeltaVIntErrScaleFactorREA:
+    @description: "Integral Error Limit Bdy State Scale Factor Applied During Residual REA Delta V"
+    @datatype: float64
+    @default: 1.5
+
+  .MinDeltaVCmdMag:
+    @description: "Minimum Magnitude Delta V That Is Commanded To The Jets"
+    @units: "m/sec"
+    @datatype: float64
+    @default: 0.001
+
+  .MinBreDeltaVOnTime:
+    @description: "Minimum Duration For A BRE Delta V"
+    @units: sec
+    @datatype: float64
+    @default: 10
+}
+
+table AP_AcModeTable {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 29
+
+  .Mode:
+    @datatype: uint16
+    @array: "DBT_NUM_AC_AP_MODE,DBT_NUM_AC_AP_MODE"
+
+  ."Mode[*":
+    @structname: "Mode[*"
+}
+
+table AP_ACRWATABLE {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 36
+
+  .Inertia:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."Inertia[*":
+    @structname: "Inertia[*"
+
+  .DcmRwaToBdy:
+    @datatype: float64
+    @array: "4,DBT_NUM_OF_RWA"
+
+  ."DcmRwaToBdy[*":
+    @structname: "DcmRwaToBdy[*"
+
+  .NumOfRwaTachCycles:
+    @description: "Max Number Of RWA Tachometer Cycles, cnt"
+    @units: cnt
+    @datatype: uint16
+    @default: 24
+
+  .MaxTachCountValue:
+    @description: "14 Bit Tachometer Counter Limit, cnt"
+    @units: "cnt,0x3FFF"
+    @datatype: uint16
+    @default: 16383
+
+  .DeltaTachCountThr:
+    @description: "Delta Tachometer Count Threshold, cnt"
+    @units: cnt
+    @datatype: uint16
+    @default: 1
+
+  .Pad:
+    @datatype: uint16
+
+  .Pulse2Angle:
+    @description: "Tachometer Pulses Per Revolution, rad/pulse"
+    @units: "rad/pulse"
+    @datatype: float64
+    @default: "DBT_TWOPI / 18.0"
+
+  .Torque2VoltSF:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."Torque2VoltSF[*":
+    @structname: "Torque2VoltSF[*"
+
+  .Torque2VoltBias:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."Torque2VoltBias[*":
+    @structname: "Torque2VoltBias[*"
+
+  .CmdVolt2CntBias:
+    @description: "RW Count Bias For Volt To Count Conversion, cnt"
+    @units: cnt
+    @datatype: float64
+    @default: 2048
+
+  .CmdVolt2CntSF:
+    @description: "RW Volts To Counts Scale Factor, cnt/V"
+    @units: "cnt/V"
+    @datatype: float64
+    @default: 204.8
+
+  .TorqueSlewLmt:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."TorqueSlewLmt[*":
+    @structname: "TorqueSlewLmt[*"
+
+  .TorqueCmdMaxLmt:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."TorqueCmdMaxLmt[*":
+    @structname: "TorqueCmdMaxLmt[*"
+
+  .TorqueScNullCtlMaxLmt:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."TorqueScNullCtlMaxLmt[*":
+    @structname: "TorqueScNullCtlMaxLmt[*"
+
+  .DefaultSpeedCmd:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."DefaultSpeedCmd[*":
+    @structname: "DefaultSpeedCmd[*"
+
+  .SpeedCmdMax:
+    @description: "RWA Max Commanded Speed, rad/sec"
+    @units: "rad/sec"
+    @datatype: float64
+    @default: 628.3185307
+
+  .ViscousFrcSF:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."ViscousFrcSF[*":
+    @structname: "ViscousFrcSF[*"
+
+  .Kest:
+    @datatype: float64
+    @array: 2
+
+  ."Kest[*":
+    @structname: "Kest[*"
+
+  .Kcnt:
+    @datatype: float64
+    @array: 2
+
+  ."Kcnt[*":
+    @structname: "Kcnt[*"
+
+  .TorqueStictionMax:
+    @datatype: float64
+    @array: DBT_NUM_OF_RWA
+
+  ."TorqueStictionMax[*":
+    @structname: "TorqueStictionMax[*"
+
+  .Fdc:
+    @datatype: ac_ap_rwa_table_fdc_type
+
+  ."Fdc.*":
+    @structname: "Fdc.*"
+}
+
+table AP_ACSADTABLE {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 50
+
+  .AtoDGainFactor:
+    @datatype: float64
+
+  .ScaleFactor:
+    @datatype: float64
+
+  .StepDeadband:
+    @description: "Max error before commanding step"
+    @datatype: float64
+
+  .SlewRateHiThr:
+    @description: "Error high threshold for transition between normal & slew rate"
+    @datatype: float64
+
+  .SlewRateLoThr:
+    @description: "Error low threshold for transition between normal & slew rate"
+    @datatype: float64
+
+  .GroundRef:
+    @datatype: float64
+    @array: DBT_NUM_OF_SAD
+
+  ."GroundRef[*":
+    @structname: "GroundRef[*"
+
+  .RefVolt:
+    @datatype: float64
+    @array: "DBT_NUM_OF_SAD,DBT_NUM_OF_POT"
+
+  ."RefVolt[*":
+    @structname: "RefVolt[*"
+
+  .AngleRange:
+    @datatype: float64
+    @array: "DBT_NUM_OF_SAD,DBT_NUM_OF_POT"
+
+  ."AngleRange[*":
+    @structname: "AngleRange[*"
+
+  .AnglePotMax:
+    @description: "Maximum magnitude of potentiometer measurement, rad"
+    @datatype: float64
+
+  .AnglePotRes:
+    @description: "Resolution of potentiometer measurement, rad"
+    @datatype: float64
+
+  .Kstep:
+    @description: "Angle change per SAD step, rad/step"
+    @datatype: float64
+
+  .AngleRef:
+    @datatype: float64
+    @array: "DBT_NUM_OF_SAD,DBT_NUM_OF_POT"
+
+  ."AngleRef[*":
+    @structname: "AngleRef[*"
+
+  .Mest:
+    @description: "SAD estimator gain attenuation factor"
+    @datatype: float64
+
+  .Best:
+    @description: "SAD estimator gain offset factor"
+    @datatype: float64
+
+  .MaxStepsNormal:
+    @description: "Maximum number of steps per control cycle, Normal rate, steps"
+    @datatype: uint16
+
+  .MinStepsNormal:
+    @description: "Minimum number of steps per control cycle, Normal rate, steps"
+    @datatype: uint16
+
+  .MaxStepsSlew:
+    @description: "Maximum number of steps per control cycle, Slew rate, steps"
+    @datatype: uint16
+
+  .MinStepsSlew:
+    @description: "Minimum number of steps per control cycle, Slew rate, steps"
+    @datatype: uint16
+
+  .CycleMask:
+    @description: "Cycle mask for SAD processing"
+    @datatype: uint16
+
+  .FrameMask:
+    @description: "Frame mask for SAD processing"
+    @datatype: uint16
+
+  .Fdc:
+    @datatype: ac_ap_sad_table_fdc_type
+
+  ."Fdc.*":
+    @structname: "Fdc.*"
+}
+
+table AP_ACTABLE {
+  @classname: AP1
+  @buildstruct!
+  @fsw.component: AP
+  @id: 19
+
+  .CycleMax:
+    @description: "Maximum 0.1 Sec Cycles (From 1 - 10)"
+    @units: "cycles,(From_1-10)"
+    @datatype: uint16
+    @default: DBT_NUM_AC_CYCLES
+
+  .FrameMax:
+    @description: "Maximum +1.0 Sec Frames (From 1 - 15)"
+    @units: "frames,(From_1-15)"
+    @datatype: uint16
+    @default: 15
+
+  .RateNull:
+    @datatype: ac_ap_ratenull_type
+
+  ."RateNull.*":
+    @structname: "RateNull.*"
+
+  .SunAcq:
+    @datatype: ac_ap_sunacq_type
+
+  ."SunAcq.*":
+    @structname: "SunAcq.*"
+
+  .SunPnt:
+    @datatype: ac_ap_sunpnt_type
+
+  ."SunPnt.*":
+    @structname: "SunPnt.*"
+}
